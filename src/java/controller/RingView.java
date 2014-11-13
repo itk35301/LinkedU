@@ -18,11 +18,11 @@ public class RingView implements Serializable {
     public void init() {
         setUniversities(new ArrayList<universityBean>());
          
-        getUniversities().add(new universityBean("1", "Illinois State University", "Normal, IL", "$22,000"));
-        getUniversities().add(new universityBean("2", "University of Illinois", "Champaign, IL", "$30,000"));
-        getUniversities().add(new universityBean("4", "Illinois Wesleyan", "Bloomington, IL", "$45,000"));
-        getUniversities().add(new universityBean("5", "Southern Illinois University", "Carbondale", "$25,000"));
-        getUniversities().add(new universityBean("6", "Eastern Illinois University", "Charleston", "$28,000"));
+        getUniversities().add(new universityBean("1", "Illinois State University", "Normal, IL", "22,000"));
+        getUniversities().add(new universityBean("2", "University of Illinois", "Champaign, IL", "30,000"));
+        getUniversities().add(new universityBean("4", "Illinois Wesleyan", "Bloomington, IL", "45,000"));
+        getUniversities().add(new universityBean("5", "Southern Illinois University", "Carbondale", "25,000"));
+        getUniversities().add(new universityBean("6", "Eastern Illinois University", "Charleston", "28,000"));
     }
 
     public List<universityBean> getUniversities() {

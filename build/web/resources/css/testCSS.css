@@ -11,16 +11,22 @@ and open the template in the editor.
 .transBackground{
     background-color: rgba(255,255,255,0.8);
     border-radius: 5px 10px 5px 10px / 10px 5px 10px 5px;
-    border-radius: 5px;
-    border-radius: 5px 10px / 10px; 
 }
 body{
-    background: url(../resources/images/mainPageBackground.jpg) top no-repeat;
+    background: url(../resources/images/mainPageBackground2.jpg) top no-repeat;
     background-attachment:fixed;
 }
 
 .content{
     display: inline-table;
+    z-index: 20;
+    height: 300px;
+    width: 900px;
+    margin-top: -185px;
+    margin-left: -450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .title{
@@ -30,5 +36,60 @@ body{
     color: #FFF;
     padding: 5px 80px 0 0;
     vertical-align: middle;
+}
+
+.signUp{
+    display: table-cell;
+    text-align: center;
+    width: 340px;
+    height: 400px;
+    vertical-align: middle;
+    position: relative;
+    background-color: rgb(255,255,255);
+}
+
+.signUpForm{
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+.signUpText{
+    color: #000;
+    border-radius: 0;
+    margin: 5px 0;
+    padding: 1px 0 0 12.5px;
+    height: 43px;
+    background-color: #FFF;
+    border-color: #ecedff;
+    font-size: 16px;
+    letter-spacing: .5px;
+}
+
+.signUpButton{
+    background-color: #2990ea;
+    color: #FFF;
+    margin: 25px 0 0 18px;
+    width: 199px;
+    font-size: 16px;
+    letter-spacing: .5px;
+    height: 43.5px;
+    border-radius: 30px;
+    padding-top: 5px;
+}
+
+.logInButton{
+    background-color: #2990ea;
+    color: #FFF;
+    margin: 5px 0 0 0;
+    width: 50px;
+    font-size: 12px;
+    letter-spacing: .5px;
+    height: 22px;
+    padding-top: 2px;
+    border-radius: 10px;
 }
 
