@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="testCSS.css"  />
+    </h:head>
+    <h:body>
+    <div class="transBackground">
+    <h:outputStylesheet library="css" name="testCSS.css"  />
+    <h:form id="form">
+    <h3 style="margin-top: 0">Featured Universities</h3>
+    <p:ring id="basic" value="#{ringView.universities}" var="university">
+        <p:outputPanel style="text-align: center;" layout="block">
+            #{university.name}
+            <br />
+            <p:commandButton update=":form:universityDetail" icon="ui-icon-search" title="View" oncomplete="PF('universityDialog').show();">
+                <f:setPropertyActionListener value="#{university}" target="#{ringView.selectedUniversity}" />
+            </p:commandButton>
+        </p:outputPanel>
+    </p:ring>
+ 
+    <p:dialog header="University Info" widgetVar="universityDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="350">
+        <p:outputPanel id="universityDetail" style="text-align:center;" layout="block">
+            <p:panelGrid  columns="2" rendered="#{not empty ringView.selectedUniversity}" columnClasses="value">
+                <f:facet name="header">
+                    #{ringView.selectedUniversity.name}
+                    <p:graphicImage name="images/#{ringView.selectedUniversity.name}.jpg" />
+                </f:facet>
+                
+                <h:outputText value="Location" />
+                <h:outputText value="#{ringView.selectedUniversity.location}" />
+ 
+                <h:outputText value="Name: " />
+                <h:outputText value="#{ringView.selectedUniversity.name}" />
+ 
+                <h:outputText value="Average Tuition:" />
+                <h:outputText value="#{ringView.selectedUniversity.avgTuition}"/>
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </div>
+    </h:body> 
+</html>
+
