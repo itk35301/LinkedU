@@ -33,7 +33,7 @@ public class universityDAOImpl implements universityDAO{
         
         int rowCount = 0;
         try {
-            String myDB = "jdbc:derby://localhost:1527/linkedu";
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
             Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
             
             String insertString;
@@ -91,7 +91,7 @@ public class universityDAOImpl implements universityDAO{
         int rowCount = 0;
         try{
             DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
-            String myDB = "jdbc:derby://localhost:1527/linkedu";
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
             DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
             
             String updateString;
@@ -120,7 +120,7 @@ public class universityDAOImpl implements universityDAO{
         int rowCount = 0;
         try{
             DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
-            String myDB = "jdbc:derby://localhost:1527/linkedu";
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
             DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
             
             String updateString;
@@ -147,7 +147,7 @@ public class universityDAOImpl implements universityDAO{
         Connection DBConn = null;
         try{
             DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
-            String myDB = "jdbc:derby://localhost:1527/linkedu";
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
             DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
             
             Statement stmt = DBConn.createStatement();
