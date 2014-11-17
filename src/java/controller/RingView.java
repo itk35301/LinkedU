@@ -1,7 +1,10 @@
 package controller;
  
+import dao.universityDAO;
+import dao.universityDAOImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,12 +20,12 @@ public class RingView implements Serializable {
     @PostConstruct
     public void init() {
         setUniversities(new ArrayList<universityBean>());
-         
-        getUniversities().add(new universityBean("1", "Illinois State University", "Normal, IL", "22,000"));
-        getUniversities().add(new universityBean("2", "University of Illinois", "Champaign, IL", "30,000"));
-        getUniversities().add(new universityBean("4", "Illinois Wesleyan", "Bloomington, IL", "45,000"));
-        getUniversities().add(new universityBean("5", "Southern Illinois University", "Carbondale", "25,000"));
-        getUniversities().add(new universityBean("6", "Eastern Illinois University", "Charleston", "28,000"));
+        universityDAO aUDAO = new universityDAOImpl();
+        ArrayList<universityBean> highUni = aUDAO.findHighlighted();
+        Iterator<universityBean> iterator = highUni.iterator();
+        while(iterator.hasNext()){
+            getUniversities().add(iterator.next());
+        }
     }
 
     public List<universityBean> getUniversities() {
