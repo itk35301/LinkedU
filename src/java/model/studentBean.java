@@ -28,6 +28,29 @@ public class studentBean {
     private String photogalleryid;
     private String videogalleryid;
 
+    
+    public studentBean(String stuID, String password, String fname,String lname, String phone, String email,String about,String highschool, String interests,String major,String experience,String gpa,String profilePic,String photogalleryid,String videogalleryid){
+        this.stuID = stuID;
+        this.password = password;
+        this.fname = fname;
+        this.lname = lname;
+        this.phone = phone;
+        this.email = email;
+        this.about = about;
+        this.highschool = highschool;
+        this.interests = interests;
+        this.major = major;
+        this.experience = experience;
+        this.gpa = gpa;
+        this.profilePic = profilePic;
+        this.photogalleryid = photogalleryid;
+        this.videogalleryid = videogalleryid;
+     
+        
+        
+    }
+    
+    
     public String getStuID() {
         return stuID;
     }
