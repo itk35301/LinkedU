@@ -14,9 +14,8 @@ public class recruiter {
     
     private String recid;
     private String uid;
-   private String vidgalleryid;
-   private String photogalleryid;
-   
+    private String vidgalleryid;
+    private String photogalleryid;  
     private String password;
     private String fname;
     private String lname;
@@ -26,6 +25,22 @@ public class recruiter {
     private String university;
     private String profilePic;
 
+    
+    public recruiter(String recid, String uid, String vidgalleryid, String photogalleryid, String password, String fname, String lname,  String address, String phone, String email, String university, String profilePic ){
+       this.recid = recid; 
+       this.uid = uid; 
+       this.vidgalleryid = vidgalleryid; 
+       this.photogalleryid = photogalleryid; 
+       this.password = password; 
+       this.fname = fname; 
+       this.lname = lname; 
+       this.address = address;  
+       this.phone = phone; 
+       this.email = email; 
+       this.university = university;  
+       this.profilePic = profilePic;           
+             
+    }
     public String getRecid() {
         return recid;
     }
