@@ -5,10 +5,23 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pa="http://xmlns.jcp.org/jsf/passthrough">
     <head>
-        <title>TODO supply a title</title>
+        <title>Student Sign Up page</title>
     </head>
     <body>
+        <h:panelGroup layout="block">
+            <h:form>
+             Username: <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}"/><br/><br/>
+             Password: <h:inputSecret id="password" value="#{signUpController.theStudent.password}" /><br/><br/>
+             Email: <h:inputText id="email" value="#{signUpController.theStudent.email}"/><br/><br/>
+             <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpComplete()}" />
+             </h:form>
+        </h:panelGroup>
     </body>
 </html>

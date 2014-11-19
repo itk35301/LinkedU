@@ -36,15 +36,16 @@ public class SignUpController implements Serializable {
         System.out.println(userName);
         System.out.println(password);
         System.out.println(email);
-        if(signUpType.equals("student")){
-            theStudent.setStuID(userName);
-            theStudent.setEmail(email);
-            theStudent.setPassword(password);
-            return "studentSignUp.xhtml";
-        }else if(signUpType.equals("Recruiter")){
-            
-        }else if(signUpType.equals("University")){
-            
+        switch (signUpType) {
+            case "student":
+                theStudent.setStuID(userName);
+                theStudent.setEmail(email);
+                theStudent.setPassword(password);
+                return "studentSignUp.xhtml";
+            case "recruiter":
+                break;
+            case "university":
+                break;
         }
         return "error.xhtml";
     }
