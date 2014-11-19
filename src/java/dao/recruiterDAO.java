@@ -15,8 +15,10 @@ import model.recruiter;
 public interface recruiterDAO {
     
     public int createRecruiter(recruiter arecruiter);
-    public ArrayList findBySTUID(String aSTUID);
+    public ArrayList findByRECID(String aRECID);
     public int updatePassword(recruiter arecruiter);
     public int updateFName(recruiter arecruiter);
+    public ArrayList selectLoginFromRecruiter(String query);
+    public ArrayList findloginRECID(String aRECID);
     
 }

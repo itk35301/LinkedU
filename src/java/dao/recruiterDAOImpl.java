@@ -71,9 +71,9 @@ public class recruiterDAOImpl implements recruiterDAO{
     }
 
     @Override
-    public ArrayList findBySTUID(String aSTUID) {
-       String query = "SELECT * FROM linkedu.STUDENT ";
-        query += "WHERE STUID = '" + aSTUID + "'";
+    public ArrayList findByRECID(String aRECID) {
+       String query = "SELECT * FROM linkedu.RECRUITER ";
+        query += "WHERE RECID = '" + aRECID + "'";
 
         ArrayList aRecruiterCollection = selectProfilesFromDB(query);
         return aRecruiterCollection;
@@ -180,4 +180,53 @@ public class recruiterDAOImpl implements recruiterDAO{
         }
         return aRecruiterCollection;
     }
+     @Override
+    public ArrayList findloginRECID(String aRECID) {
+       String query = "SELECT * FROM linkedu.RECRUITER ";
+        query += "WHERE RECID = '" + aRECID + "'";
+
+        ArrayList aRecruiterCollection = selectLoginFromRecruiter(query);
+        return aRecruiterCollection;
+    }
+    
+    @Override
+    public ArrayList selectLoginFromRecruiter(String query) {
+        ArrayList aLoginCollection = new ArrayList();
+        Connection DBConn = null;
+        try {
+            DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
+            // if doing the above in Oracle: DBHelper.loadDriver("oracle.jdbc.driver.OracleDriver");
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
+            // if doing the above in Oracle:  String myDB = "jdbc:oracle:thin:@oracle.itk.ilstu.edu:1521:ora478";
+            DBConn = DBHelper.connect2DB(myDB, "itkstu", "student");
+
+            // With the connection made, create a statement to talk to the DB server.
+            // Create a SQL statement to query, retrieve the rows one by one (by going to the
+            // columns), and formulate the result string to send back to the client.
+            Statement stmt = DBConn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            String userid, password;
+
+            while (rs.next()) {
+
+                userid = rs.getString("RECID");
+                password = rs.getString("PASSWORD");
+
+                aLoginCollection.add(userid);
+                aLoginCollection.add(password);
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.err.println("ERROR: Problems with SQL select");
+            e.printStackTrace();
+        }
+        try {
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return aLoginCollection;
+    }
 }
+

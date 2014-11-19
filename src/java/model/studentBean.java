@@ -10,6 +10,9 @@ package model;
  *
  * @author itk35301
  */
+import dao.studentDAOImpl;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class studentBean {
     private String stuID;
@@ -172,6 +175,31 @@ public class studentBean {
 
     public void setVideogalleryid(String videogaleryid) {
         this.videogalleryid = videogaleryid;
+    }
+    public static boolean authenticate(String username, String Password) {
+
+        String user = username;
+        String pass = Password;
+        
+        studentDAOImpl login = new studentDAOImpl();
+        
+      //  ArrayList userAuth = new ArrayList();
+        
+        ArrayList userAuth = login.findloginSTUID(user);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put(userAuth.get(0).toString(), userAuth.get(1).toString());
+       
+        
+        if(map.containsKey(user)){
+            if (map.get(user).equals(pass)) {
+               return true;
+             } else {
+                return false;
+            }
+        }
+        else
+            return false;
     }
     
 }

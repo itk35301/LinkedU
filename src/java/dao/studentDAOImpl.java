@@ -43,7 +43,7 @@ public class studentDAOImpl implements studentDAO{
                 aStudent.setStuID(aStudent.getStuID().replaceAll("'","''"));
             }
            
-            insertString = "Insert INTO linkedu.STUDENT VALUES ('"
+            insertString = "Insert INTO LINKEDU.STUDENT VALUES ('"
                 + aStudent.getStuID()
                 + "','" + aStudent.getVideogalleryid()
                 + "','" + aStudent.getPhotogalleryid()
@@ -62,8 +62,7 @@ public class studentDAOImpl implements studentDAO{
                 + "')";
             
             rowCount = stmt.executeUpdate(insertString);
-            System.out.println("studentTable insert string =" + insertString);
-            
+            System.out.println("studentTable insert string =" + insertString);           
             
             DBConn.close();
         } catch (SQLException e) {
@@ -109,15 +108,7 @@ public class studentDAOImpl implements studentDAO{
         return rowCount;
     }
     
-    @Override
-    public ArrayList findByStuID(String aStudentID) {
-       String query = "SELECT * FROM LinkedU.STUDENT ";
-        query += "WHERE stuID = '" + aStudentID + "'";
 
-        ArrayList userCollection = selectProfilesFromDB(query);
-        return userCollection;
-    }
-    
     
     @Override
     public int updateFName(studentBean aStudent) {
@@ -192,5 +183,54 @@ public class studentDAOImpl implements studentDAO{
             System.err.println(e.getMessage());
         }
         return aStudentCollection;
+    }
+
+     @Override
+    public ArrayList findloginSTUID(String aSTUID) {
+       String query = "SELECT * FROM linkedu.STUDENT ";
+        query += "WHERE STUID = '" + aSTUID + "'";
+
+        ArrayList aStudentCollection = selectLoginFromStudent(query);
+        return aStudentCollection;
+    }
+    
+    @Override
+    public ArrayList selectLoginFromStudent(String query) {
+        ArrayList aLoginCollection = new ArrayList();
+        Connection DBConn = null;
+        try {
+            DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
+            // if doing the above in Oracle: DBHelper.loadDriver("oracle.jdbc.driver.OracleDriver");
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
+            // if doing the above in Oracle:  String myDB = "jdbc:oracle:thin:@oracle.itk.ilstu.edu:1521:ora478";
+            DBConn = DBHelper.connect2DB(myDB, "itkstu", "student");
+
+            // With the connection made, create a statement to talk to the DB server.
+            // Create a SQL statement to query, retrieve the rows one by one (by going to the
+            // columns), and formulate the result string to send back to the client.
+            Statement stmt = DBConn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            String userid, password;
+
+            while (rs.next()) {
+
+                userid = rs.getString("STUID");
+                password = rs.getString("PASSWORD");
+
+                aLoginCollection.add(userid);
+                aLoginCollection.add(password);
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.err.println("ERROR: Problems with SQL select");
+            e.printStackTrace();
+        }
+        try {
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return aLoginCollection;
     }
 }

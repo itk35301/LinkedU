@@ -18,5 +18,7 @@ public interface universityDAO {
     public ArrayList findByUID(String aUID);
     public int updatePassword(universityBean aUniversity);
     public int updateName(universityBean aUniversity);
+    public ArrayList selectLoginFromUniversity(String query);
+    public ArrayList findloginUID(String aUID);
     public ArrayList findHighlighted();
 }

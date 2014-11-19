@@ -6,6 +6,10 @@
 
 package model;
 
+import dao.recruiterDAOImpl;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author itk35301
@@ -25,8 +29,10 @@ public class recruiter {
     private String university;
     private String profilePic;
 
+    public recruiter(){
+        
+    }
     
-    public recruiter(){}
     
     public recruiter(String recid, String uid, String vidgalleryid, String photogalleryid, String password, String fname, String lname,  String address, String phone, String email, String university, String profilePic ){
        this.recid = recid; 
@@ -138,5 +144,29 @@ public class recruiter {
     public void setPhotogalleryid(String photogalleryid) {
         this.photogalleryid = photogalleryid;
     }
-    
+    public static boolean authenticate(String username, String Password) {
+
+        String user = username;
+        String pass = Password;
+        
+        recruiterDAOImpl login = new recruiterDAOImpl();
+        
+      //  ArrayList userAuth = new ArrayList();
+        
+        ArrayList userAuth = login.findByRECID(user);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put(userAuth.get(0).toString(), userAuth.get(1).toString());
+       
+        
+        if(map.containsKey(user)){
+            if (map.get(user).equals(pass)) {
+               return true;
+             } else {
+                return false;
+            }
+        }
+        else
+            return false;
+    }
 }

@@ -6,6 +6,10 @@
 
 package model;
 
+import dao.universityDAOImpl;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author itk35301
@@ -22,8 +26,10 @@ public class universityBean {
     private String photogalleryid;
     private String vidgalleryid;
     
-    public universityBean(){}
-    
+
+    public universityBean(){
+        
+    }
     public universityBean(String uid, String password, String profilePic, String uName, String location, String avgTuition, String highlighted, String about, String vidgalleryid, String photogalleryid){
         this.name = uName;
         this.location = location;
@@ -115,5 +121,30 @@ public class universityBean {
 
     public void setVidgalleryid(String vidgalleryid) {
         this.vidgalleryid = vidgalleryid;
+    }
+    public static boolean authenticate(String username, String Password) {
+
+        String user = username;
+        String pass = Password;
+        
+        universityDAOImpl login = new universityDAOImpl();
+        
+      //  ArrayList userAuth = new ArrayList();
+        
+        ArrayList userAuth = login.findloginUID(user);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put(userAuth.get(0).toString(), userAuth.get(1).toString());
+       
+        
+        if(map.containsKey(user)){
+            if (map.get(user).equals(pass)) {
+               return true;
+             } else {
+                return false;
+            }
+        }
+        else
+            return false;
     }
 }
