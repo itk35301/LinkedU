@@ -231,5 +231,35 @@ public class universityDAOImpl implements universityDAO{
         }
         return aLoginCollection;
     }
+    @Override
+    public boolean exist(String aUID) {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
+        }
+
+        try {
+
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
+            Connection DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+
+            String queryCheck = "SELECT * from LINKEDU.UNIVERSITY WHERE UID = '" + aUID + "'";
+            Statement st = DBConn.createStatement();
+            ResultSet rs = st.executeQuery(queryCheck); // execute the query, and get a java resultset
+            // if this ID already exists, we quit
+            if (rs.next()) {
+                DBConn.close();
+               return true;
+            }
+            
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return false;
+    }
+
 }
 

@@ -20,5 +20,6 @@ public interface recruiterDAO {
     public int updateFName(recruiter arecruiter);
     public ArrayList selectLoginFromRecruiter(String query);
     public ArrayList findloginRECID(String aRECID);
+    public boolean exist(String aRECID);
     
 }

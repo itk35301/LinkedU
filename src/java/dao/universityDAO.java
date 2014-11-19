@@ -6,6 +6,7 @@
 package dao;
 
 import java.util.ArrayList;
+
 import model.universityBean;
 
 /**
@@ -21,4 +22,5 @@ public interface universityDAO {
     public ArrayList selectLoginFromUniversity(String query);
     public ArrayList findloginUID(String aUID);
     public ArrayList findHighlighted();
+    public boolean exist(String aUID);
 }

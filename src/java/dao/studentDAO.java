@@ -20,5 +20,6 @@ public interface studentDAO {
     public int updateFName(studentBean aStudent);
     public ArrayList selectLoginFromStudent(String query);
     public ArrayList findloginSTUID(String aSTUID);
+    public boolean exist(String aSTUID);
   
 }

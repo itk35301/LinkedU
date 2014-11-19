@@ -153,7 +153,7 @@ public class recruiter {
         
       //  ArrayList userAuth = new ArrayList();
         
-        ArrayList userAuth = login.findByRECID(user);
+        ArrayList userAuth = login.findloginRECID(user);
 
         HashMap<String, String> map = new HashMap<>();
         map.put(userAuth.get(0).toString(), userAuth.get(1).toString());
