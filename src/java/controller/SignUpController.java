@@ -25,6 +25,9 @@ public class SignUpController implements Serializable {
     private String email;
 
     public SignUpController() {
+        theStudent = new studentBean();
+        theRecruiter = new recruiter();
+        theUniversity = new universityBean();
     }
     
     
@@ -38,14 +41,11 @@ public class SignUpController implements Serializable {
             theStudent.setEmail(email);
             theStudent.setPassword(password);
             return "studentSignUp.xhtml";
-        }
-        if(signUpType.equals("Recruiter")){
+        }else if(signUpType.equals("Recruiter")){
+            
+        }else if(signUpType.equals("University")){
             
         }
-        if(signUpType.equals("University")){
-            
-        }
-        
         return "error.xhtml";
     }
 

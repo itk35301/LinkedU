@@ -26,6 +26,8 @@ public class recruiter {
     private String profilePic;
 
     
+    public recruiter(){}
+    
     public recruiter(String recid, String uid, String vidgalleryid, String photogalleryid, String password, String fname, String lname,  String address, String phone, String email, String university, String profilePic ){
        this.recid = recid; 
        this.uid = uid; 

@@ -28,6 +28,9 @@ public class studentBean {
     private String photogalleryid;
     private String videogalleryid;
 
+    public studentBean(){
+        
+    }
     
     public studentBean(String stuID, String password, String fname,String lname, String phone, String email,String about,String highschool, String interests,String major,String experience,String gpa,String profilePic,String photogalleryid,String videogalleryid){
         this.stuID = stuID;

@@ -22,6 +22,8 @@ public class universityBean {
     private String photogalleryid;
     private String vidgalleryid;
     
+    public universityBean(){}
+    
     public universityBean(String uid, String password, String profilePic, String uName, String location, String avgTuition, String highlighted, String about, String vidgalleryid, String photogalleryid){
         this.name = uName;
         this.location = location;
