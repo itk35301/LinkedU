@@ -13,7 +13,7 @@
         <h:outputStylesheet library="css" name="testCSS.css"  />
     </h:head>
     <h:body>
-    <div class="transBackground">
+        <!--  <div class="transBackground">
     <h:form id="form">
     <h3 style="margin-top: 0">Featured Universities</h3>
     <p:ring id="basic" value="#{ringView.universities}" var="university">
@@ -47,6 +47,7 @@
     </p:dialog>
     </h:form>
     </div>
+  -->
     <div class="content">
         <div class="title">
             <h1>Looking for a college to apply to?<br/>We got you covered!</h1>
@@ -55,16 +56,19 @@
             <h2>Sign up for Free</h2>
             <h:panelGroup layout="block">
                 <h:form class="signUpForm">
-                    <h:inputText id="userName" value="#{signUpController.userName}" pa:placeholder="Username" styleClass="signUpText" required="true"/>
-                    <h:inputText id="email" value="#{signUpController.email}" pa:placeholder="Email" styleClass="signUpText" required="true"/>
-                    <h:inputSecret id="password" value="#{signUpController.password}" pa:placeholder="Password" styleClass="signUpText" required="true"/><br/>
+                    <h:inputText id="userName" value="#{signUpController.userName}" label="User Name" pa:placeholder="Username" styleClass="signUpText" required="true"/>
+                    <h:message for="userName" errorStyle="color:red; display:block" />
+                    <h:inputText id="email" value="#{signUpController.email}" label="E-mail" pa:placeholder="Email" styleClass="signUpText" required="true"/>
+                    <h:message for="email" errorStyle="color:red; display:block" />
+                    <h:inputSecret id="password" value="#{signUpController.password}" label="Password" pa:placeholder="Password" styleClass="signUpText" required="true"/><br/>
+                    <h:message for="password" errorStyle="color:red; display:block" />
                     <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}">
                                 <f:selectItem itemValue="select" itemLabel="Select Sign Up Type"/>
                                 <f:selectItem itemValue="student" itemLabel="Student"/>
                                 <f:selectItem itemValue="recruiter" itemLabel="Recruiter"/>
                                 <f:selectItem itemValue="university" itemLabel="University"/>
                     </h:selectOneMenu>
-                    <h:commandButton value="Sign Up" id="signUpButton" action="studentSignUp"/>
+                    <h:commandButton value="Sign Up" id="signUpButton" action="#{signUpController.signUp()}"/>
                 </h:form>
                 <h:form>
                   Already a user?<h:commandButton value="Log In" styleClass="logInButton" id="logInButton" action="login"/>

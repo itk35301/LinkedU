@@ -6,13 +6,13 @@
 package controller;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
 import model.recruiter;
 import model.studentBean;
 import model.universityBean;
 
-@Named(value = "signUpController")
+@ManagedBean
 @SessionScoped
 public class SignUpController implements Serializable {
 
@@ -34,7 +34,9 @@ public class SignUpController implements Serializable {
         System.out.println(password);
         System.out.println(email);
         if(signUpType.equals("student")){
-            
+            theStudent.setStuID(userName);
+            theStudent.setEmail(email);
+            theStudent.setPassword(password);
             return "studentSignUp.xhtml";
         }
         if(signUpType.equals("Recruiter")){
