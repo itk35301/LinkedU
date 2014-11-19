@@ -55,15 +55,21 @@
             <h2>Sign up for Free</h2>
             <h:panelGroup layout="block">
                 <h:form class="signUpForm">
-                 <h:inputText id="username" value="" pa:placeholder="Username" styleClass="signUpText"/>
-                 <h:inputText id="email" value="" pa:placeholder="Email" styleClass="signUpText"/>
-                 <h:inputSecret id="password" value="" pa:placeholder="Password" styleClass="signUpText"/>
-                 <h:commandButton value="Sign Up" styleClass="signUpButton"  id="signUpButton"/>
+                    <h:inputText id="userName" value="#{signUpController.userName}" pa:placeholder="Username" styleClass="signUpText" required="true"/>
+                    <h:inputText id="email" value="#{signUpController.email}" pa:placeholder="Email" styleClass="signUpText" required="true"/>
+                    <h:inputSecret id="password" value="#{signUpController.password}" pa:placeholder="Password" styleClass="signUpText" required="true"/><br/>
+                    <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}">
+                                <f:selectItem itemValue="select" itemLabel="Select Sign Up Type"/>
+                                <f:selectItem itemValue="student" itemLabel="Student"/>
+                                <f:selectItem itemValue="recruiter" itemLabel="Recruiter"/>
+                                <f:selectItem itemValue="university" itemLabel="University"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Sign Up" id="signUpButton" action="studentSignUp"/>
                 </h:form>
                 <h:form>
                   Already a user?<h:commandButton value="Log In" styleClass="logInButton" id="logInButton" action="login"/>
                 </h:form>
-            </h:panelGroup> 
+            </h:panelGroup>
         </div>
     </div>
     </h:body> 

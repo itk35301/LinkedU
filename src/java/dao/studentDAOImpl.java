@@ -109,7 +109,14 @@ public class studentDAOImpl implements studentDAO{
         return rowCount;
     }
     
- 
+    @Override
+    public ArrayList findByStuID(String aStudentID) {
+       String query = "SELECT * FROM LinkedU.STUDENT ";
+        query += "WHERE stuID = '" + aStudentID + "'";
+
+        ArrayList userCollection = selectProfilesFromDB(query);
+        return userCollection;
+    }
     
     
     @Override
