@@ -20,6 +20,15 @@ and open the template in the editor.
              Username: <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}"/><br/><br/>
              Password: <h:inputSecret id="password" value="#{signUpController.theStudent.password}" /><br/><br/>
              Email: <h:inputText id="email" value="#{signUpController.theStudent.email}"/><br/><br/>
+             First Name: <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}"></h:inputText><br/><br/>
+             Last Name: <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}"></h:inputText><br/><br/>
+             Phone: <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}"></h:inputText><br/><br/>
+             High School:<h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}"></h:inputText><br/><br/>
+             About me:<h:inputTextarea id="about" value="#{signUpController.theStudent.about}"></h:inputTextarea><br/><br/>
+             Interests:<h:inputTextarea id="interests" value="#{signUpController.theStudent.interests}"></h:inputTextarea><br/><br/>
+             Major:<h:inputText id ="major" value ="#{signUpController.theStudent.major}"></h:inputText><br/><br/>
+             Experience:<h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}"></h:inputTextarea><br/><br/>
+             GPA:<h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}"></h:inputText><br/><br/>
              <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpComplete()}" />
              </h:form>
         </h:panelGroup>
