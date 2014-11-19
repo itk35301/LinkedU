@@ -5,6 +5,8 @@
  */
 package controller;
 
+import dao.studentDAO;
+import dao.studentDAOImpl;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,7 +33,7 @@ public class SignUpController implements Serializable {
     }
     
     
-    public String signUp(){
+    public String signUpPartOne(){
         System.out.println(signUpType);
         System.out.println(userName);
         System.out.println(password);
@@ -48,6 +50,16 @@ public class SignUpController implements Serializable {
                 break;
         }
         return "error.xhtml";
+    }
+    
+    public String signUpComplete(){
+        studentDAO aStudentDAO = new studentDAOImpl();
+        int rowCount = aStudentDAO.createStudent(theStudent);
+        if (rowCount == 1){
+            return "goodSignUp.xhtml";
+        }else{
+            return "There was an error.";
+        }
     }
 
     public studentBean getTheStudent() {
