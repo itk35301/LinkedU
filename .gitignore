@@ -45,3 +45,5 @@ Temporary Items
 *.jar
 *.properties
 nbproject/private/private.xml
+*.xml
+*.properties
