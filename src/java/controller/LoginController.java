@@ -44,7 +44,7 @@ public class LoginController implements Serializable {
             stuModel.setStuID(getUserName());
             stuModel.setPassword(getPassword());
             if (studentBean.authenticate(getStuModel().getStuID(), getStuModel().getPassword())) {
-                return "profile.xhtml";
+                return "studentProfile.xhtml";
             }
         } else if (reclogin.exist(userName)) {
             recModel.setRecid(getUserName());
