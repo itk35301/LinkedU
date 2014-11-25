@@ -25,21 +25,21 @@ and open the template in the editor.
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                     <h:form>
-                       
-                    Search:<p:inputText  size="70" placeholder="Search Students or Universitys" id="search" />
-                    <p:commandButton id="withIcon" icon="ui-icon-search" />
-                     
+
+                        Search:<p:inputText  size="70" placeholder="Search Students or Universitys" id="search" />
+                        <p:commandButton id="withIcon" icon="ui-icon-search" />
+
                     </h:form>
                 </p:layoutUnit>
 
-                
+
 
                 <p:layoutUnit position="west" size="175" header="Hide" collapsible="true">
 
                     <h:form>
                         <p:menu>
                             <p:submenu label="Menu">
-                                <p:menuitem value="Edit Profile" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                                <p:menuitem value="Edit Profile"  url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
                                 <p:menuitem value="Upload Media" url="http://forum.primefaces.org/" />
                                 <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
 
@@ -51,7 +51,7 @@ and open the template in the editor.
 
                 <p:layoutUnit   resizable="true" position="center">
 
-                 
+
                     <h:form>
 
                         <p:growl id="msgs" showDetail="true" />
@@ -59,16 +59,22 @@ and open the template in the editor.
                         <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <p:graphicImage width="150" height="171" name="images/#{LoginController.stuModel.profilePic}" />
+                                <p:commandButton id="imageBtn" value="View Gallery" type="button" />
+                                <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
+                                    <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
+                                        <p:graphicImage name="images/#{image}" alt="#{image}" title="#{image}"/>
+                                    </p:galleria>
+                                </p:overlayPanel>
                                 <h:outputText value="#{LoginController.stuModel.about}" />
                             </h:panelGrid>
                         </p:panel>
-                         <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
+                        <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="10">
-                               
+
                                 <h:outputText value="#{LoginController.stuModel.fname}" />
                                 <h:outputText value="#{LoginController.stuModel.lname}" />
                                 <h:outputText value="#{LoginController.stuModel.highschool}" />
-                               
+
                             </h:panelGrid>
                         </p:panel>
                     </h:form>
