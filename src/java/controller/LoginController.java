@@ -49,7 +49,7 @@ public class LoginController implements Serializable {
             uModel.setId(getUserName());
             uModel.setPassword(getPassword());
             if (universityBean.authenticate(getuModel().getUid(), getuModel().getPassword())) {
-                return "profile.xhtml";
+                return "universityProfile.xhtml";
             }
         } else {
             Attempts++;
