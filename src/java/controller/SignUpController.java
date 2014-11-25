@@ -10,7 +10,6 @@ import dao.studentDAOImpl;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import model.recruiter;
 import model.studentBean;
 import model.universityBean;
 
@@ -20,7 +19,6 @@ public class SignUpController implements Serializable {
 
     private studentBean theStudent;
     private universityBean theUniversity;
-    private recruiter theRecruiter;
     private String signUpType;
     private String userName;
     private String password;
@@ -28,7 +26,6 @@ public class SignUpController implements Serializable {
 
     public SignUpController() {
         theStudent = new studentBean();
-        theRecruiter = new recruiter();
         theUniversity = new universityBean();
     }
     
@@ -44,8 +41,6 @@ public class SignUpController implements Serializable {
                 theStudent.setEmail(email);
                 theStudent.setPassword(password);
                 return "studentSignUp.xhtml";
-            case "recruiter":
-                break;
             case "university":
                 break;
         }
@@ -86,14 +81,7 @@ public class SignUpController implements Serializable {
         this.theUniversity = theUniversity;
     }
 
-    public recruiter getTheRecruiter() {
-        return theRecruiter;
-    }
-
-    public void setTheRecruiter(recruiter theRecruiter) {
-        this.theRecruiter = theRecruiter;
-    }
-
+   
     public String getUserName() {
         return userName;
     }

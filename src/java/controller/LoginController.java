@@ -5,13 +5,12 @@
  */
 package controller;
 
-import dao.recruiterDAOImpl;
+
 import dao.studentDAOImpl;
 import dao.universityDAOImpl;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import model.recruiter;
 import model.studentBean;
 import model.universityBean;
 
@@ -25,7 +24,6 @@ public class LoginController implements Serializable {
 
     private studentBean stuModel;
     private universityBean uModel;
-    private recruiter recModel;
     private String userName;
     private String password;
     int Attempts = 0;
@@ -33,24 +31,19 @@ public class LoginController implements Serializable {
     public LoginController() {
         stuModel = new studentBean();
         uModel = new universityBean();
-        recModel = new recruiter();
     }
 
     public String login() {
         studentDAOImpl stulogin = new studentDAOImpl();
-        recruiterDAOImpl reclogin = new recruiterDAOImpl();
         universityDAOImpl ulogin = new universityDAOImpl();
         if (stulogin.exist(userName)) {
             stuModel.setStuID(getUserName());
             stuModel.setPassword(getPassword());
             if (studentBean.authenticate(getStuModel().getStuID(), getStuModel().getPassword())) {
+                studentDAOImpl student = new studentDAOImpl();
+                stuModel.setProfilePic(student.findProfilePic(stuModel));
+           
                 return "studentProfile.xhtml";
-            }
-        } else if (reclogin.exist(userName)) {
-            recModel.setRecid(getUserName());
-            recModel.setPassword(getPassword());
-            if (recruiter.authenticate(getRecModel().getRecid(), getRecModel().getPassword())) {
-                return "profile.xhtml";
             }
         } else if (ulogin.exist(userName)) {
             uModel.setId(getUserName());
@@ -84,13 +77,6 @@ public class LoginController implements Serializable {
         this.uModel = uModel;
     }
 
-    public recruiter getRecModel() {
-        return recModel;
-    }
-
-    public void setRecModel(recruiter recModel) {
-        this.recModel = recModel;
-    }
 
     public String getUserName() {
         return userName;

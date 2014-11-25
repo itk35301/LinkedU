@@ -194,6 +194,46 @@ public class studentDAOImpl implements studentDAO{
         return aStudentCollection;
     }
     
+    public String findProfilePic(studentBean aStudent) {
+       String query = "SELECT * FROM linkedu.STUDENT ";
+        query += "WHERE STUID = '" + aStudent.getStuID() + "'";
+
+        Connection DBConn = null;
+        try {
+            DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
+            // if doing the above in Oracle: DBHelper.loadDriver("oracle.jdbc.driver.OracleDriver");
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
+            // if doing the above in Oracle:  String myDB = "jdbc:oracle:thin:@oracle.itk.ilstu.edu:1521:ora478";
+            DBConn = DBHelper.connect2DB(myDB, "itkstu", "student");
+
+            // With the connection made, create a statement to talk to the DB server.
+            // Create a SQL statement to query, retrieve the rows one by one (by going to the
+            // columns), and formulate the result string to send back to the client.
+            Statement stmt = DBConn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            String profilepic;
+
+            while (rs.next()) {
+
+                profilepic= rs.getString("PROFILEPIC");
+             
+                return profilepic;
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            System.err.println("ERROR: Problems with SQL select");
+            e.printStackTrace();
+        }
+        try {
+            DBConn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+       return "";
+    
+    }
+    
     @Override
     public ArrayList selectLoginFromStudent(String query) {
         ArrayList aLoginCollection = new ArrayList();

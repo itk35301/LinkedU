@@ -32,7 +32,7 @@ and open the template in the editor.
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <h:graphicImage id="profilePic" value="#{LoginController.stuModel.getProfilePic()}"/>
+                    
                     <h:form>
                     <p:menu>
                         <p:submenu label="Resources">
@@ -48,7 +48,9 @@ and open the template in the editor.
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                   
+                         <h:graphicImage value="#{LoginController.stuModel.profilePic}"/>
+                   
                 </p:layoutUnit>
 
             </p:layout>
