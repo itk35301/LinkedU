@@ -81,6 +81,16 @@ public class studentDAOImpl implements studentDAO{
         return aStudentCollection;
     }
     
+    @Override
+    public ArrayList findloginSTUID(String aSTUID) {
+       String query = "SELECT * FROM linkedu.STUDENT ";
+        query += "WHERE STUID = '" + aSTUID + "'";
+
+        ArrayList aStudentCollection = selectLoginFromStudent(query);
+        return aStudentCollection;
+    }
+    
+    
 
     @Override
     public int updatePassword(studentBean aStudent) {
@@ -185,15 +195,6 @@ public class studentDAOImpl implements studentDAO{
         return aStudentCollection;
     }
 
-     @Override
-    public ArrayList findloginSTUID(String aSTUID) {
-       String query = "SELECT * FROM linkedu.STUDENT ";
-        query += "WHERE STUID = '" + aSTUID + "'";
-
-        ArrayList aStudentCollection = selectLoginFromStudent(query);
-        return aStudentCollection;
-    }
-    
     public String findProfilePic(studentBean aStudent) {
        String query = "SELECT * FROM linkedu.STUDENT ";
         query += "WHERE STUID = '" + aStudent.getStuID() + "'";

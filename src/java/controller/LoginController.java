@@ -9,7 +9,9 @@ package controller;
 import dao.studentDAOImpl;
 import dao.universityDAOImpl;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import model.studentBean;
 import model.universityBean;
@@ -37,11 +39,13 @@ public class LoginController implements Serializable {
         studentDAOImpl stulogin = new studentDAOImpl();
         universityDAOImpl ulogin = new universityDAOImpl();
         if (stulogin.exist(userName)) {
-            stuModel.setStuID(getUserName());
-            stuModel.setPassword(getPassword());
-            if (studentBean.authenticate(getStuModel().getStuID(), getStuModel().getPassword())) {
+            if (studentBean.authenticate(userName, password)) {
                 studentDAOImpl student = new studentDAOImpl();
-                stuModel.setProfilePic(student.findProfilePic(stuModel));
+                ArrayList studentCollection = student.findBySTUID(userName);
+                stuModel = (studentBean)studentCollection.get(0);
+               FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInStu", stuModel);
+
+                
            
                 return "studentProfile.xhtml";
             }

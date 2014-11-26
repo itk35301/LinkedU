@@ -11,6 +11,7 @@ import dao.studentDAOImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import model.studentBean;
 
@@ -28,8 +29,16 @@ public class StudentProfileController implements Serializable {
  
 
     public StudentProfileController() {
-        stuModel = new studentBean();
+        stuModel = (studentBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");;
        
+    }
+
+    public studentBean getStuModel() {
+        return stuModel;
+    }
+
+    public void setStuModel(studentBean stuModel) {
+        this.stuModel = stuModel;
     }
     
     
