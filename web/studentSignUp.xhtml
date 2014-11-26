@@ -11,26 +11,123 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pa="http://xmlns.jcp.org/jsf/passthrough">
-    <head>
+    <h:head>
         <title>Student Sign Up page</title>
-    </head>
+    </h:head>
     <body>
-        <h:panelGroup layout="block">
-            <h:form>
-             Username: <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}"/><br/><br/>
-             Password: <h:inputSecret id="password" value="#{signUpController.theStudent.password}" /><br/><br/>
-             Email: <h:inputText id="email" value="#{signUpController.theStudent.email}"/><br/><br/>
-             First Name: <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}"></h:inputText><br/><br/>
-             Last Name: <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}"></h:inputText><br/><br/>
-             Phone: <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}"></h:inputText><br/><br/>
-             High School:<h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}"></h:inputText><br/><br/>
-             About me:<h:inputTextarea id="about" value="#{signUpController.theStudent.about}"></h:inputTextarea><br/><br/>
-             Interests:<h:inputTextarea id="interests" value="#{signUpController.theStudent.interests}"></h:inputTextarea><br/><br/>
-             Major:<h:inputText id ="major" value ="#{signUpController.theStudent.major}"></h:inputText><br/><br/>
-             Experience:<h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}"></h:inputTextarea><br/><br/>
-             GPA:<h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}"></h:inputText><br/><br/>
-             <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpComplete()}" />
-             </h:form>
-        </h:panelGroup>
+        <h:form>
+            <p:wizard flowListener="#{studentWizard.onFlowProcess}">
+                <p:tab id="personal" title="Personal">
+                    <p:panel header="Personal Details">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="First Name:"/>
+                            <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}"/>
+                        
+                            <h:outputText value="Last Name:"/>
+                            <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}"/>
+                        
+                            <h:outputText value="Phone Number:"/>
+                            <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="schoolInfo" title="High School">
+                    <p:panel header="High School Information">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="High School:"/>
+                            <h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}"/>
+                            
+                            <h:outputText value="Experience:"/>
+                            <h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}"/>
+                            
+                            <h:outputText value="GPA:"/>
+                            <h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="aboutMe" title="About Me">
+                    <p:panel header="About me Section">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="About Me:"/>
+                            <h:inputTextarea id="about" value="#{signUpController.theStudent.about}"/>
+                            
+                            <h:outputText value="Interests:"/>
+                            <h:inputTextarea id="interests" value="#{signUpController.theStudent.interests}"/>
+                            
+                            <h:outputText value="Desired Major:"/>
+                            <h:inputText id ="major" value ="#{signUpController.theStudent.major}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="loginInfo" title="Login Info">
+                    <p:panel header="Login Information">
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:outputText value="User Name:"/>
+                            <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}"/>
+                            
+                            <h:outputText value="Password:"/>
+                            <h:inputSecret id="password" value="#{signUpController.theStudent.password}"/>
+                            
+                            <h:outputText value="Email:"/>
+                            <h:inputText id="email" value="#{signUpController.theStudent.email}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="confirm" title="Confirmation">
+                    <p:panel header="Confirmation">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid,grid">
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="First Name:"/>
+                                <h:outputText value ="#{signUpController.theStudent.fname}"/>
+                        
+                                <h:outputText value="Last Name:"/>
+                                <h:outputText value ="#{signUpController.theStudent.lname}"/>
+                        
+                                <h:outputText value="Phone Number:"/>
+                                <h:outputText value ="#{signUpController.theStudent.phone}"/>
+                            </h:panelGrid>
+                        
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="High School:"/>
+                                <h:outputText value ="#{signUpController.theStudent.highschool}"/>
+                            
+                                <h:outputText value="Experience:"/>
+                                <h:outputText value="#{signUpController.theStudent.experience}"/>
+                            
+                                <h:outputText value="GPA:"/>
+                                <h:outputText value ="#{signUpController.theStudent.gpa}"/>
+                           </h:panelGrid>
+                        
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="About Me:"/>
+                                <h:outputText value="#{signUpController.theStudent.about}"/>
+                            
+                                <h:outputText value="Interests:"/>
+                                <h:outputText value="#{signUpController.theStudent.interests}"/>
+                            
+                                <h:outputText value="Desired Major:"/>
+                                <h:outputText value ="#{signUpController.theStudent.major}"/>
+                            </h:panelGrid>
+                        
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="User Name:"/>
+                                <h:outputText value="#{signUpController.theStudent.stuID}"/>
+                            
+                                <h:outputText value="Password:"/>
+                                <h:outputText value="#{signUpController.theStudent.password}"/>
+                            
+                                <h:outputText value="Email:"/>
+                               <h:outputText value="#{signUpController.theStudent.email}"/>
+                           </h:panelGrid>
+                        </h:panelGrid>
+                        <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpComplete()}" />
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+        </h:form>
     </body>
 </html>
