@@ -24,48 +24,58 @@ and open the template in the editor.
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Search:<p:inputText id="search" />
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Hide" collapsible="true">
-
                     <h:form>
-                        <p:menu>
-                            <p:submenu label="Menu">
-                                <p:menuitem value="Edit Profile" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                                <p:menuitem value="" url="http://forum.primefaces.org/" />
-                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
 
-                            </p:submenu>
+                        Search:<p:inputText  size="70" placeholder="Search Students or Universities" id="search" />
+                        <p:commandButton id="withIcon" icon="ui-icon-search" />
 
-                        </p:menu>
                     </h:form>
                 </p:layoutUnit>
 
+
+
+                <p:layoutUnit position="west"  resizable="true" size="200" header="Hide" collapsible="true">
+
+                    <h:form>
+
+                        <p:commandButton value="Edit Profile" />          
+                        <p:commandButton value="Upload Media" id="uploadBtn"  />
+                        <p:overlayPanel  id="imagePanel" dismissable="true" for="uploadBtn" hideEffect="fade" showCloseIcon="true" >
+                            <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
+                            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}"/>
+                        </p:overlayPanel>
+
+
+                    </h:form>
+
+                </p:layoutUnit>
+                        
+
                 <p:layoutUnit   resizable="true" position="center">
 
-                 
                     <h:form>
 
                         <p:growl id="msgs" showDetail="true" />
 
                         <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage width="150" height="171" name="images/#{LoginController.stuModel.profilePic}" />
-                                <h:outputText value="#{LoginController.stuModel.about}" />
+                                <p:graphicImage width="150" height="171" name="images/#{StudentProfileController.stuModel.profilePic}" />
+                                <p:commandButton id="imageBtn" value="View Gallery" type="button" />
+                                <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
+                                    <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
+                                        <p:graphicImage name="images/#{image}" alt="#{image}" title="#{image}"/>
+                                    </p:galleria>
+                                </p:overlayPanel>
+                                <h:outputText value="#{StudentProfileController.stuModel.about}" />
                             </h:panelGrid>
                         </p:panel>
-                         <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
+                        <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage width="150" height="171" name="images/#{LoginController.stuModel.profilePic}" />
-                                <h:outputText value="#{LoginController.stuModel.fname}" />
-                                <h:outputText value="#{LoginController.stuModel.lname}" />
-                                <h:outputText value="#{LoginController.stuModel.highschool}" />
-                               
+
+                                <h:outputText value="#{StudentProfileController.stuModel.fname}" />
+                                <h:outputText value="#{StudentProfileController.stuModel.lname}" />
+                                <h:outputText value="#{StudentProfileController.stuModel.highschool}" />
+
                             </h:panelGrid>
                         </p:panel>
                     </h:form>
