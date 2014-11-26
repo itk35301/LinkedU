@@ -65,6 +65,7 @@
                     <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}">
                                 <f:selectItem itemValue="select" itemLabel="Select Sign Up Type"/>
                                 <f:selectItem itemValue="student" itemLabel="Student"/>
+                                <f:selectItem itemValue="recruiter" itemLabel="Recruiter"/>
                                 <f:selectItem itemValue="university" itemLabel="University"/>
                     </h:selectOneMenu>
                     <h:commandButton value="Sign Up" id="signUpButton" action="#{signUpController.signUpPartOne()}"/>
