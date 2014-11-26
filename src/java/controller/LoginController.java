@@ -64,7 +64,7 @@ public class LoginController implements Serializable {
         return "LoginBad.xhtml";
 
     }
-
+    
     public studentBean getStuModel() {
         return stuModel;
     }
