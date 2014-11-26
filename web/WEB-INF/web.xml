@@ -20,5 +20,9 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
+    </welcome-file-list> 
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>start</param-value>
+    </context-param>
 </web-app>
