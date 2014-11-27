@@ -336,7 +336,7 @@ public class studentDAOImpl implements studentDAO{
         String query = "SELECT * FROM LINKEDU.STUDENT";
         query += " WHERE highschool LIKE '%" + highSchool + "%'";
          
-       ArrayList aStudentCollection = selectProfilesFromDB(query);
+        ArrayList aStudentCollection = selectProfilesFromDB(query);
         return aStudentCollection;
     }
 
@@ -345,8 +345,8 @@ public class studentDAOImpl implements studentDAO{
         String query = "SELECT * FROM LINKEDU.STUDENT";
         query += " WHERE (gpa >= '" + lowGpa + "' AND gpa <= '" + highGpa + "')";
          
-       ArrayList aStudentCollection = selectProfilesFromDB(query);
+        ArrayList aStudentCollection = selectProfilesFromDB(query);
         return aStudentCollection;
     }
-
+    
 }

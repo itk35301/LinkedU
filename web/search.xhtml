@@ -14,9 +14,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-    <h1>Select which way you want to search!</h1>
-    <h2>Student</h2>
+   
     <h:form>
+        <h1>Select which way you want to search!</h1>
+        <h2>Student</h2>
+        
         <p:outputPanel id="customPanel" style="margin-bottom:10px">
             <p:selectOneRadio id="customRadio" value="#{searchController.searchType}" layout="custom">
                 <f:selectItem itemLabel="First Name" itemValue="fName" />
@@ -50,6 +52,27 @@ and open the template in the editor.
             <h:panelGrid columns="2" cellpadding="5">
                 <p:commandButton action="#{searchController.studentSearch}" value="Search Students" icon="ui-icon-search"/>
                 <p:commandButton action="#{searchController.showAll}" value="Show all Students"/>
+            </h:panelGrid>
+        </p:outputPanel>
+    </h:form>    
+    
+    <h2>Universities</h2>
+    <h:form>
+        <p:outputPanel id="customPanel1" style="margin-bottom:10px">
+            <p:selectOneRadio id="customRadio1" value="#{searchController.searchType}" layout="custom">
+                <f:selectItem itemLabel="University Name" itemValue="universityName" />
+                <f:ajax render="uinput1" />
+            </p:selectOneRadio>
+ 
+            <h:panelGrid columns="4" cellpadding="5">
+                <p:radioButton id="uopt1" for="customRadio1" itemIndex="0" />
+                <h:outputLabel for="uopt1" value="University Name" />
+                <p:inputText id="uinput1" value="#{searchController.universityName}" disabled="#{searchController.searchType != 'universityName'}"/>
+                <h:outputLabel value="" />
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:commandButton action="#{searchController.universitySearch}" value="Search Universities" icon="ui-icon-search"/>
+                <p:commandButton action="#{searchController.showAll}" value="Show all Universities"/>
             </h:panelGrid>
         </p:outputPanel>
     </h:form>

@@ -261,5 +261,20 @@ public class universityDAOImpl implements universityDAO{
         return false;
     }
 
+    @Override
+    public ArrayList findByUniversity(String uni) {
+        String query = "SELECT * FROM LINKEDU.UNIVERSITY";
+        query += " WHERE UNAME LIKE '%" + uni + "%'";
+         
+        ArrayList aUniversityCollection = selectProfilesFromDB(query);
+        return aUniversityCollection;
+    }
+
+    @Override
+    public ArrayList findAll() {
+        String query = "SELECT * FROM LINKEDU.UNIVERSITY";
+        ArrayList aUniversityCollection = selectProfilesFromDB(query);
+        return aUniversityCollection;
+    }
 }
 

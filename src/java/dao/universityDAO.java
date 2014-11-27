@@ -23,4 +23,6 @@ public interface universityDAO {
     public ArrayList findloginUID(String aUID);
     public ArrayList findHighlighted();
     public boolean exist(String aUID);
+    public ArrayList findByUniversity(String uni);
+    public ArrayList findAll();
 }

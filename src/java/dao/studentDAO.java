@@ -6,7 +6,6 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.List;
 import model.studentBean;
 
 /**
@@ -28,5 +27,5 @@ public interface studentDAO {
     public ArrayList findByGPA(String lowGpa, String highGpa);
 
     public ArrayList findByHighSchool(String highSchool);
-  
+    
 }

@@ -7,6 +7,8 @@ package controller;
 
 import dao.studentDAO;
 import dao.studentDAOImpl;
+import dao.universityDAO;
+import dao.universityDAOImpl;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
@@ -27,6 +29,7 @@ public class SearchController implements Serializable {
     private String highSchool;
     private String lowGpa;
     private String highGpa;
+    private String universityName;
     private List<studentBean> stuList;
     private List<universityBean> uList;
 
@@ -62,6 +65,22 @@ public class SearchController implements Serializable {
         return "searchResults";
     }
     
+    public String universitySearch(){
+        universityDAO aUniversityDAO = new universityDAOImpl();
+        switch(searchType){
+            case "universityName":
+                uList = aUniversityDAO.findByUniversity(universityName);
+                return "universityResults";
+        }
+        
+        return "error.xhtml";
+    }
+    
+    public String showAllUniversity(){
+        universityDAO university = new universityDAOImpl();
+        uList = university.findAll();
+        return "universityResults";
+    }
     public String getSearchType() {
         return searchType;
     }
@@ -136,6 +155,20 @@ public class SearchController implements Serializable {
      */
     public void setHighGpa(String highGpa) {
         this.highGpa = highGpa;
+    }
+
+    /**
+     * @return the universityName
+     */
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    /**
+     * @param universityName the universityName to set
+     */
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
     
 }
