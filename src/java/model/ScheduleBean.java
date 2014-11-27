@@ -14,6 +14,7 @@ public class ScheduleBean {
     
     private String timeslot;
     private String groupname;
+    private String date;
 
     /**
      * @return the timeslot
@@ -21,9 +22,10 @@ public class ScheduleBean {
     public ScheduleBean(){
         
     }
-    public ScheduleBean(String atimeslot, String aGroupname){
+    public ScheduleBean(String aDate, String atimeslot, String aGroupname){
         this.timeslot = atimeslot;
         this.groupname = aGroupname;
+        this.groupname = aDate;
         
     }
     public String getTimeslot() {
@@ -49,5 +51,19 @@ public class ScheduleBean {
      */
     public void setGroupname(String Groupname) {
         this.groupname = Groupname;
+    }
+
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
     }
 }

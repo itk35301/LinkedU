@@ -35,15 +35,16 @@ public class ScheduleDAOImpl implements ScheduleDAO {
             Statement stmt = DBConn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM LINKEDU.Schedule");
             
-            String timeslot,groupname;
+            String date, timeslot,groupname;
             
             while (rs.next()) {
                 // 1. if a float (say PRICE) is to be retrieved, use rs.getFloat("PRICE");
                 // 2. Instead of using column name, can alternatively use: rs.getString(1); // not 0
                 timeslot = rs.getString("TimeSlot");
                 groupname = rs.getString("GroupName");
+                date = rs.getString("Date");
 
-                if (timeslot.equals(aSchedule.getTimeslot()) && groupname != null) {
+                if (timeslot.equals(aSchedule.getTimeslot()) && date.equals(aSchedule.getDate()) && groupname != null) {
                     return 2;
                 }
                 
@@ -103,16 +104,17 @@ public class ScheduleDAOImpl implements ScheduleDAO {
             // columns), and formulate the result string to send back to the client.
             Statement stmt = DBConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            String timeslot, groupname;
+            String date,timeslot, groupname;
             ScheduleBean aScheduleBean;
             while (rs.next()) {
                 // 1. if a float (say PRICE) is to be retrieved, use rs.getFloat("PRICE");
                 // 2. Instead of using column name, can alternatively use: rs.getString(1); // not 0
                 timeslot = rs.getString("TimeSlot");
                 groupname = rs.getString("GroupName");
+                date = rs.getString("Date");
 
                 // make a ProfileBean object out of the values
-                aScheduleBean = new ScheduleBean(timeslot, groupname);
+                aScheduleBean = new ScheduleBean(date, timeslot, groupname);
                 // add the newly created object to the collection
                 aScheduleBeanCollection.add(aScheduleBean);
             }
@@ -155,18 +157,19 @@ public class ScheduleDAOImpl implements ScheduleDAO {
             // columns), and formulate the result string to send back to the client.
             Statement stmt = DBConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            String timeslot, groupname;
+            String date, timeslot, groupname;
             ScheduleBean aScheduleBean;
             while (rs.next()) {
                 // 1. if a float (say PRICE) is to be retrieved, use rs.getFloat("PRICE");
                 // 2. Instead of using column name, can alternatively use: rs.getString(1); // not 0
                 timeslot = rs.getString("TimeSlot");
                 groupname = rs.getString("GroupName");
+                date = rs.getString("Date");
 
                 if (groupname == null) {
 
                     // make a ProfileBean object out of the values
-                    aScheduleBean = new ScheduleBean(timeslot, groupname);
+                    aScheduleBean = new ScheduleBean(date, timeslot, groupname);
                     // add the newly created object to the collection
                     aScheduleBeanCollection.add(aScheduleBean);
 
