@@ -20,7 +20,7 @@ and open the template in the editor.
             </f:facet>
         </h:head>
 
-         <h:body>
+        <h:body>
 
             <p:layout fullPage="true">
 
@@ -79,26 +79,53 @@ and open the template in the editor.
                                 </p:overlayPanel>
                             </h:panelGrid>
                             Average Tuition: <h:outputText value="#{UniversityProfileController.UModel.avgTuition}"/>
-                            
+
 
                         </p:panel>
                         <p:panel id="contact" header="Contact" footer="Contact Information" style="margin-bottom:20px">
 
-                            
+
                             Phone: <h:outputText value="#{StudentProfileController.stuModel.phone}"/><br/>
                             Email: <h:outputText value="#{StudentProfileController.stuModel.email}"/><br/>
 
                         </p:panel>
-                        
+
                     </h:form>
-                
+
                     <h:form>  
                         <p:panel id="location" header="Location" footer="University Location" style="margin-bottom:20px">
                             Location: <h:outputText value="#{UniversityProfileController.UModel.location}"/><br/>  
                             <p:gmap  center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" />                         
                         </p:panel>
                     </h:form>
+                    <p:panel id="appointment" header="Schedule an Appointment" footer="Appointment" style="margin-bottom:20px">
+                        <h:form>
+                            <h:dataTable id="scheduleTable" value="#{scheduleController.timeSlots}" var="aRow"
+                                         border="1" cellpadding="2" cellspacing="0">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="TimeSlot"/>
+                                    </f:facet>
+                                    <h:outputText value="#{aRow.timeslot}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="GroupName"/>
+                                    </f:facet>
+                                    <h:outputText value="#{aRow.groupname}"/>
+                                </h:column>
+                            </h:dataTable>
+
+                            Enter Group Name:<h:inputText value="#{scheduleController.theModel.groupname}" /><br/>
+                            <h:selectOneMenu value="#{scheduleController.theModel.timeslot}">
+                                <f:selectItems  value="#{scheduleController.timeSlots}" var="time" itemValue="#{time.timeslot}" itemLabel="#{time.timeslot}"/>
+                            </h:selectOneMenu><br/>
+                            <h:commandButton value="Schedule"
+                                             action="#{scheduleController.setSchedule()}" />
+                        </h:form>
+                    </p:panel>
                 </p:layoutUnit>
+
 
             </p:layout>
 
