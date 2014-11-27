@@ -25,6 +25,8 @@ public class SearchController implements Serializable {
     private String firstName;
     private String lastName;
     private String highSchool;
+    private String lowGpa;
+    private String highGpa;
     private List<studentBean> stuList;
     private List<universityBean> uList;
 
@@ -46,8 +48,12 @@ public class SearchController implements Serializable {
             case "highSchool":
                 stuList = aStudentDAO.findByHighSchool(highSchool);
                 return "searchResults";
+            case "gpa":
+                stuList = aStudentDAO.findByGPA(lowGpa, highGpa);
+                return "searchResults";
         }
-                return "error.xhtml";
+        
+        return "error.xhtml";
     }
     
     public String showAll(){
@@ -103,7 +109,33 @@ public class SearchController implements Serializable {
     public void setHighSchool(String highSchool) {
         this.highSchool = highSchool;
     }
-    
-    
+
+    /**
+     * @return the lowGpa
+     */
+    public String getLowGpa() {
+        return lowGpa;
+    }
+
+    /**
+     * @param lowGpa the lowGpa to set
+     */
+    public void setLowGpa(String lowGpa) {
+        this.lowGpa = lowGpa;
+    }
+
+    /**
+     * @return the highGpa
+     */
+    public String getHighGpa() {
+        return highGpa;
+    }
+
+    /**
+     * @param highGpa the highGpa to set
+     */
+    public void setHighGpa(String highGpa) {
+        this.highGpa = highGpa;
+    }
     
 }

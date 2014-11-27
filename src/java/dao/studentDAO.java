@@ -25,6 +25,7 @@ public interface studentDAO {
     public boolean exist(String aSTUID);
     public ArrayList findByFirstName(String name);
     public ArrayList findByLastName(String name);
+    public ArrayList findByGPA(String lowGpa, String highGpa);
 
     public ArrayList findByHighSchool(String highSchool);
   

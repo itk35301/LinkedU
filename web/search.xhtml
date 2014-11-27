@@ -22,21 +22,30 @@ and open the template in the editor.
                 <f:selectItem itemLabel="First Name" itemValue="fName" />
                 <f:selectItem itemLabel="Last Name" itemValue="lName" />
                 <f:selectItem itemLabel="Intrested University" itemValue="highSchool" />
-                <f:ajax render="input1 input2 input3" />
+                <f:selectItem itemLabel="Search GPA" itemValue="gpa" />
+                <f:ajax render="input1 input2 input3 input4" />
             </p:selectOneRadio>
  
-            <h:panelGrid columns="3" cellpadding="5">
+            <h:panelGrid columns="4" cellpadding="5">
                 <p:radioButton id="opt1" for="customRadio" itemIndex="0" />
                 <h:outputLabel for="opt1" value="First Name" />
                 <p:inputText id="input1" value="#{searchController.firstName}" disabled="#{searchController.searchType != 'fName'}"/>
- 
+                <h:outputLabel value="" />
+                
                 <p:radioButton id="opt2" for="customRadio" itemIndex="1" />
                 <h:outputLabel for="opt2" value="Last Name" />
                 <p:inputText id="input2" value="#{searchController.lastName}" disabled="#{searchController.searchType != 'lName'}"/>
+                <h:outputLabel value="" />
  
                 <p:radioButton id="opt3" for="customRadio" itemIndex="2" />
                 <h:outputLabel for="opt3" value="High School" />
                 <p:inputText id="input3" value="#{searchController.highSchool}" disabled="#{searchController.searchType != 'highSchool'}"/>
+                <h:outputLabel value="" />
+                
+                <p:radioButton id="opt4" for="customRadio" itemIndex="3" />
+                <h:outputLabel for="opt4" value="GPA" />
+                <p:inputText id="input4" value="#{searchController.lowGpa}" disabled="#{searchController.searchType != 'gpa'}"/>
+                <p:inputText id="input5" value="#{searchController.highGpa}" disabled="#{searchController.searchType != 'gpa'}"/>
             </h:panelGrid>
             <h:panelGrid columns="2" cellpadding="5">
                 <p:commandButton action="#{searchController.studentSearch}" value="Search Students" icon="ui-icon-search"/>

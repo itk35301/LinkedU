@@ -340,4 +340,13 @@ public class studentDAOImpl implements studentDAO{
         return aStudentCollection;
     }
 
+    @Override
+    public ArrayList findByGPA(String lowGpa, String highGpa) {
+        String query = "SELECT * FROM LINKEDU.STUDENT";
+        query += " WHERE (gpa >= '" + lowGpa + "' AND gpa <= '" + highGpa + "')";
+         
+       ArrayList aStudentCollection = selectProfilesFromDB(query);
+        return aStudentCollection;
+    }
+
 }
