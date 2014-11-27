@@ -123,7 +123,7 @@ and open the template in the editor.
                                 </h:column>
                             </h:dataTable>
 
-                            Enter Group Name:<h:inputText value="#{scheduleController.theModel.groupname}" /><br/>
+                            Enter Name:<h:inputText value="#{scheduleController.theModel.groupname}" /><br/>
                             <h:selectOneMenu value="#{scheduleController.theModel.timeslot}">
                                 <f:selectItems  value="#{scheduleController.timeSlots}" var="time" itemValue="#{time.timeslot}" itemLabel="#{time.timeslot}"/>
                             </h:selectOneMenu><br/>

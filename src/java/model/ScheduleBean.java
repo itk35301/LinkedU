@@ -25,7 +25,7 @@ public class ScheduleBean {
     public ScheduleBean(String aDate, String atimeslot, String aGroupname){
         this.timeslot = atimeslot;
         this.groupname = aGroupname;
-        this.groupname = aDate;
+        this.date = aDate;
         
     }
     public String getTimeslot() {
