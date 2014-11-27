@@ -31,15 +31,10 @@ public class SignUpController implements Serializable {
     
     
     public String signUpPartOne(){
-        System.out.println(signUpType);
-        System.out.println(userName);
-        System.out.println(password);
-        System.out.println(email);
         switch (signUpType) {
             case "student":
                 theStudent.setStuID(userName);
                 theStudent.setEmail(email);
-                theStudent.setPassword(password);
                 return "studentSignUp.xhtml";
             case "university":
                 break;

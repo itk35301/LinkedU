@@ -21,7 +21,7 @@ public class ImageView {
      
     @PostConstruct
     public void init() {
-        images = new ArrayList<String>();
+        images = new ArrayList<>();
         for (int i = 1; i <= 1; i++) {
             images.add("kyle" + i + ".jpg");
         }

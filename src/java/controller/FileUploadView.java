@@ -35,4 +35,8 @@ public class FileUploadView {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
+    
+    public void uploadPicture(){
+        
+    }
 }

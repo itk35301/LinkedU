@@ -40,8 +40,7 @@ public class LoginController implements Serializable {
         universityDAOImpl ulogin = new universityDAOImpl();
         if (stulogin.exist(userName)) {
             if (studentBean.authenticate(userName, password)) {
-                studentDAOImpl student = new studentDAOImpl();
-                ArrayList studentCollection = student.findBySTUID(userName);
+                ArrayList studentCollection = stulogin.findBySTUID(userName);
                 stuModel = (studentBean)studentCollection.get(0);
                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInStu", stuModel);
 
@@ -50,9 +49,11 @@ public class LoginController implements Serializable {
                 return "studentProfile.xhtml";
             }
         } else if (ulogin.exist(userName)) {
-            uModel.setId(getUserName());
-            uModel.setPassword(getPassword());
-            if (universityBean.authenticate(getuModel().getUid(), getuModel().getPassword())) {
+            if (universityBean.authenticate(userName, password)) {
+                ArrayList uniCollection = ulogin.findByUID(userName);
+                uModel = (universityBean)uniCollection.get(0);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInUni", uModel);
+                
                 return "universityProfile.xhtml";
             }
         } else {

@@ -29,7 +29,7 @@ public class StudentProfileController implements Serializable {
  
 
     public StudentProfileController() {
-        stuModel = (studentBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");;
+        stuModel = (studentBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
        
     }
 
