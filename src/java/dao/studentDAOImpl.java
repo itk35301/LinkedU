@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import model.studentBean;
 
 
@@ -22,6 +23,13 @@ import model.studentBean;
  * It also handles pre-populating the update page.
  */
 public class studentDAOImpl implements studentDAO{
+    
+    @Override
+    public ArrayList findAll() {
+       String query = "SELECT * FROM LINKEDU.STUDENT";
+       ArrayList aStudentCollection = selectProfilesFromDB(query);
+       return aStudentCollection;
+    }
     
     @Override
     public int createStudent(studentBean aStudent){
@@ -302,6 +310,34 @@ public class studentDAOImpl implements studentDAO{
         }
 
         return false;
+    }
+
+    @Override
+    public ArrayList findByFirstName(String name) {
+        String query = "SELECT * FROM LINKEDU.STUDENT";
+        query += " WHERE fName = '" + name + "'";
+        
+        System.out.println(query);
+        ArrayList aStudentCollection = selectProfilesFromDB(query);
+        return aStudentCollection;
+    }
+    
+    @Override
+    public ArrayList findByLastName(String name) {
+        String query = "SELECT * FROM LINKEDU.STUDENT";
+        query += " WHERE lName = '" + name + "'";
+        
+        ArrayList aStudentCollection = selectProfilesFromDB(query);
+        return aStudentCollection;
+    }
+
+    @Override
+    public ArrayList findByHighSchool(String highSchool) {
+        String query = "SELECT * FROM LINKEDU.STUDENT";
+        query += " WHERE highschool LIKE '%" + highSchool + "%'";
+         
+       ArrayList aStudentCollection = selectProfilesFromDB(query);
+        return aStudentCollection;
     }
 
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+    <h1>Select which way you want to search!</h1>
+    <h2>Student</h2>
+    <h:form>
+        <p:outputPanel id="customPanel" style="margin-bottom:10px">
+            <p:selectOneRadio id="customRadio" value="#{searchController.searchType}" layout="custom">
+                <f:selectItem itemLabel="First Name" itemValue="fName" />
+                <f:selectItem itemLabel="Last Name" itemValue="lName" />
+                <f:selectItem itemLabel="Intrested University" itemValue="highSchool" />
+                <f:ajax render="input1 input2 input3" />
+            </p:selectOneRadio>
+ 
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:radioButton id="opt1" for="customRadio" itemIndex="0" />
+                <h:outputLabel for="opt1" value="First Name" />
+                <p:inputText id="input1" value="#{searchController.firstName}" disabled="#{searchController.searchType != 'fName'}"/>
+ 
+                <p:radioButton id="opt2" for="customRadio" itemIndex="1" />
+                <h:outputLabel for="opt2" value="Last Name" />
+                <p:inputText id="input2" value="#{searchController.lastName}" disabled="#{searchController.searchType != 'lName'}"/>
+ 
+                <p:radioButton id="opt3" for="customRadio" itemIndex="2" />
+                <h:outputLabel for="opt3" value="High School" />
+                <p:inputText id="input3" value="#{searchController.highSchool}" disabled="#{searchController.searchType != 'highSchool'}"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:commandButton action="#{searchController.studentSearch}" value="Search Students" icon="ui-icon-search"/>
+                <p:commandButton action="#{searchController.showAll}" value="Show all Students"/>
+            </h:panelGrid>
+        </p:outputPanel>
+    </h:form>
+    </h:body>
+</html>

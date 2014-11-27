@@ -6,6 +6,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.studentBean;
 
 /**
@@ -14,6 +15,7 @@ import model.studentBean;
  */
 public interface studentDAO {
     
+    public ArrayList findAll();
     public int createStudent(studentBean aStudent);
     public ArrayList findBySTUID(String aSTUID);
     public int updatePassword(studentBean aStudent);
@@ -21,5 +23,9 @@ public interface studentDAO {
     public ArrayList selectLoginFromStudent(String query);
     public ArrayList findloginSTUID(String aSTUID);
     public boolean exist(String aSTUID);
+    public ArrayList findByFirstName(String name);
+    public ArrayList findByLastName(String name);
+
+    public ArrayList findByHighSchool(String highSchool);
   
 }
