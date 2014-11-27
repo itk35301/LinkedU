@@ -20,7 +20,7 @@ and open the template in the editor.
             </f:facet>
         </h:head>
 
-        <h:body>
+         <h:body>
 
             <p:layout fullPage="true">
 
@@ -45,12 +45,20 @@ and open the template in the editor.
                             <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
                             <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}"/>
                         </p:overlayPanel>
+                        <p:commandButton value="Log Out" action="#{dialogView.logOut()}">
+                            <p:confirm header="Confirmation" message="Are you sure you want to log out?" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="index?faces-redirect=true"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
 
 
                     </h:form>
 
                 </p:layoutUnit>
-                        
+
 
                 <p:layoutUnit   resizable="true" position="center">
 
@@ -58,29 +66,36 @@ and open the template in the editor.
 
                         <p:growl id="msgs" showDetail="true" />
 
-                        <p:panel id="about" header="About University" footer="About" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage width="150" height="171" name="images/Univiversity pic goes here" />
+                        <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
+                            <h:outputText  style="font-size: 200%" value="#{UniversityProfileController.UModel.name}"/>
+                            <h:panelGrid  columns="2" cellpadding="10">
+                                <p:graphicImage  width="150" height="171" name="images/#{UniversityProfileController.UModel.profilePic}" />
+                                <h:outputText value="#{UniversityProfileController.UModel.about}" />
                                 <p:commandButton id="imageBtn" value="View Gallery" type="button" />
                                 <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
                                     <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
                                         <p:graphicImage name="images/#{image}" alt="#{image}" title="#{image}"/>
                                     </p:galleria>
                                 </p:overlayPanel>
-                                <h:outputText value="" />
                             </h:panelGrid>
-                        </p:panel>
-                        <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="10">
+                            Average Tuition: <h:outputText value="#{UniversityProfileController.UModel.avgTuition}"/>
+                            
 
-                                <h:outputText value="" />
-                                <h:outputText value="" />
-                                <h:outputText value="" />
-
-                            </h:panelGrid>
                         </p:panel>
-                        <p:panel id="Map" header="Map" footer="Map" style="margin-bottom:20px">
-                               <p:gmap  center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" />                         
+                        <p:panel id="contact" header="Contact" footer="Contact Information" style="margin-bottom:20px">
+
+                            
+                            Phone: <h:outputText value="#{StudentProfileController.stuModel.phone}"/><br/>
+                            Email: <h:outputText value="#{StudentProfileController.stuModel.email}"/><br/>
+
+                        </p:panel>
+                        
+                    </h:form>
+                
+                    <h:form>  
+                        <p:panel id="location" header="Location" footer="University Location" style="margin-bottom:20px">
+                            Location: <h:outputText value="#{UniversityProfileController.UModel.location}"/><br/>  
+                            <p:gmap  center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:600px;height:400px" />                         
                         </p:panel>
                     </h:form>
                 </p:layoutUnit>
