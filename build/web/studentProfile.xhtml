@@ -23,50 +23,82 @@ and open the template in the editor.
 
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Search:<p:inputText id="search" />
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Hide" collapsible="true">
-
+                <p:layoutUnit position="north" size="55" resizable="true" closable="true" collapsible="true">
                     <h:form>
-                        <p:menu>
-                            <p:submenu label="Menu">
-                                <p:menuitem value="Edit Profile" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                                <p:menuitem value="" url="http://forum.primefaces.org/" />
-                                <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
 
-                            </p:submenu>
+                       <!-- Search:<p:inputText  size="70" placeholder="Search Students or Universities" id="search" /> -->
+                        <p:commandButton value="Search Students or Universities" id="withIcon" icon="ui-icon-search" action="search?faces-redirect=true"/>
 
-                        </p:menu>
                     </h:form>
                 </p:layoutUnit>
 
+
+
+                <p:layoutUnit position="west"  resizable="true" size="200" header="Hide" collapsible="true">
+
+                    <h:form>
+
+                        <p:commandButton value="Edit Profile" />          
+                        <p:commandButton value="Upload Media" id="uploadBtn"  />
+                        <p:overlayPanel  id="imagePanel" dismissable="true" for="uploadBtn" hideEffect="fade" showCloseIcon="true" >
+                            <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
+                            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}"/>
+                        </p:overlayPanel>
+                        <p:commandButton value="Schedule Appointment" action="appointment.xhtml"/>
+                        <p:commandButton value="Log Out" action="#{dialogView.logOut()}">
+                            <p:confirm header="Confirmation" message="Are you sure you want to log out?" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="index?faces-redirect=true"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                        
+
+
+                    </h:form>
+
+                </p:layoutUnit>
+                        
+
                 <p:layoutUnit   resizable="true" position="center">
 
-                 
                     <h:form>
 
                         <p:growl id="msgs" showDetail="true" />
 
                         <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage width="150" height="171" name="images/#{LoginController.stuModel.profilePic}" />
-                                <h:outputText value="#{LoginController.stuModel.about}" />
-                            </h:panelGrid>
+                            <h:panelGrid  columns="2" cellpadding="10">
+                                <p:graphicImage  width="150" height="171" name="images/#{StudentProfileController.stuModel.profilePic}" />
+                                <h:outputText value="#{StudentProfileController.stuModel.about}" />
+                                <p:commandButton id="imageBtn" value="View Gallery" type="button" />
+                                <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
+                                    <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
+                                        <p:graphicImage name="images/#{image}" alt="#{image}" title="#{image}"/>
+                                    </p:galleria>
+                                </p:overlayPanel>
+                                <p:commandButton value="Upload Pictures" id="pictureBtn"  />
+                                <p:overlayPanel  id="picturePanel" dismissable="true" for="pictureBtn" hideEffect="fade" showCloseIcon="true" >
+                                    <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
+                                    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.uploadPicture}"/>
+                                </p:overlayPanel>
+                                </h:panelGrid>
+                                Interests: <h:outputText value="#{StudentProfileController.stuModel.interests}"/><br/>
+                            
                         </p:panel>
-                         <p:panel id="contact" header="Contact" footer="Contact" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage width="150" height="171" name="images/#{LoginController.stuModel.profilePic}" />
-                                <h:outputText value="#{LoginController.stuModel.fname}" />
-                                <h:outputText value="#{LoginController.stuModel.lname}" />
-                                <h:outputText value="#{LoginController.stuModel.highschool}" />
-                               
-                            </h:panelGrid>
+                        <p:panel id="contact" header="Contact" footer="Contact Information" style="margin-bottom:20px">
+                            
+                                Name: <h:outputText value="#{StudentProfileController.stuModel.fname} #{StudentProfileController.stuModel.lname}"/><br/>
+                                Phone: <h:outputText value="#{StudentProfileController.stuModel.phone}"/><br/>
+                                Email: <h:outputText value="#{StudentProfileController.stuModel.email}"/><br/>
+                                     
+                        </p:panel>
+                        <p:panel id="education" header="Education" footer="Education Background" style="margin-bottom:20px">
+                            High School: <h:outputText value="#{StudentProfileController.stuModel.highschool}"/><br/>
+                            Experience: <h:outputText value="#{StudentProfileController.stuModel.experience}"/><br/>
+                            GPA: <h:outputText value="#{StudentProfileController.stuModel.gpa}"/><br/>
+                            Major of Interest: <h:outputText value="#{StudentProfileController.stuModel.major}"/><br/>
+                            Experience: <h:outputText value="#{StudentProfileController.stuModel.experience}"/><br/>
+                            
                         </p:panel>
                     </h:form>
                 </p:layoutUnit>
