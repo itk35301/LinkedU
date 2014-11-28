@@ -72,7 +72,7 @@ public class ScheduleController implements Serializable {
         int rowCount = aScheduleDAO.createSchedule(theModel); // Doing anything with the object after this?
 
         if (rowCount == 1) {
-            sendEmail();
+            this.sendEmail();
             return "confirmation.xhtml"; // navigate to "ECHO.xhtml"
         } else if (rowCount == 2) {
             return "nolonger.xhtml";
