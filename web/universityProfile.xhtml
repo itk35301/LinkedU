@@ -100,32 +100,12 @@ and open the template in the editor.
                     </h:form>
                     <p:panel id="appointment" header="Schedule an Appointment" footer="Appointment" style="margin-bottom:20px">
                         <h:form>
-                            <h:dataTable id="scheduleTable" value="#{scheduleController.timeSlots}" var="aRow"
-                                         border="1" cellpadding="2" cellspacing="0">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Date"/>
-                                    </f:facet>
-                                    <h:outputText value="#{aRow.date}"/>
-                                </h:column>
-                                
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="TimeSlot"/>
-                                    </f:facet>
-                                    <h:outputText value="#{aRow.timeslot}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="GroupName"/>
-                                    </f:facet>
-                                    <h:outputText value="#{aRow.groupname}"/>
-                                </h:column>
-                            </h:dataTable>
+                            <p:outputLabel for="inline" value="Date:" />
+                            <p:calendar id="inline" value="#{scheduleController.theModel.mydate}" mode="inline" />
 
                             Enter Name:<h:inputText value="#{scheduleController.theModel.groupname}" /><br/>
                             <h:selectOneMenu value="#{scheduleController.theModel.timeslot}">
-                                <f:selectItems  value="#{scheduleController.timeSlots}" var="time" itemValue="#{time.timeslot}" itemLabel="#{time.timeslot}"/>
+                                <f:selectItems  value="#{scheduleController.getTimeSlots()}" var="time" itemValue="#{time.timeslot}" itemLabel="#{time.timeslot}"/>
                             </h:selectOneMenu><br/>
                             <h:commandButton value="Schedule"
                                              action="#{scheduleController.setSchedule()}" />

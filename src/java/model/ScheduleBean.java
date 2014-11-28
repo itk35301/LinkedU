@@ -4,7 +4,13 @@
  */
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +21,7 @@ public class ScheduleBean {
     private String timeslot;
     private String groupname;
     private String date;
+    private Date mydate;
 
     /**
      * @return the timeslot
@@ -26,6 +33,11 @@ public class ScheduleBean {
         this.timeslot = atimeslot;
         this.groupname = aGroupname;
         this.date = aDate;
+        try {
+            this.mydate = new SimpleDateFormat("MM/dd/yyyy").parse(aDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(ScheduleBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     public String getTimeslot() {
@@ -57,6 +69,8 @@ public class ScheduleBean {
      * @return the date
      */
     public String getDate() {
+       DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+       date = df.format(mydate);
         return date;
     }
 
@@ -65,5 +79,20 @@ public class ScheduleBean {
      */
     public void setDate(String date) {
         this.date = date;
+    }
+
+    /**
+     * @return the mydate
+     */
+    public Date getMydate() {
+        
+        return mydate;
+    }
+
+    /**
+     * @param mydate the mydate to set
+     */
+    public void setMydate(Date mydate) {
+        this.mydate = mydate;
     }
 }

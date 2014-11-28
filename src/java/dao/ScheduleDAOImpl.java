@@ -9,7 +9,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import model.ScheduleBean;
 
 /**
@@ -57,6 +59,8 @@ public class ScheduleDAOImpl implements ScheduleDAO {
             Statement stmt1 = DBConn.createStatement();
             insertString1 = "DELETE FROM LINKEDU.Schedule WHERE TimeSlot = '"
                     + aSchedule.getTimeslot()
+                    + "' AND Date = '"
+                    + aSchedule.getDate()
                     + "'";
             rowCount = stmt1.executeUpdate(insertString1);
             
@@ -67,6 +71,7 @@ public class ScheduleDAOImpl implements ScheduleDAO {
             insertString2 = "INSERT INTO LINKEDU.Schedule VALUES ('"
                     + aSchedule.getTimeslot()
                     + "','" + aSchedule.getGroupname()
+                    + "','" + aSchedule.getDate()
                     + "')";
 
             rowCount = stmt2.executeUpdate(insertString2);
@@ -112,7 +117,7 @@ public class ScheduleDAOImpl implements ScheduleDAO {
                 timeslot = rs.getString("TimeSlot");
                 groupname = rs.getString("GroupName");
                 date = rs.getString("Date");
-
+             
                 // make a ProfileBean object out of the values
                 aScheduleBean = new ScheduleBean(date, timeslot, groupname);
                 // add the newly created object to the collection
@@ -165,9 +170,11 @@ public class ScheduleDAOImpl implements ScheduleDAO {
                 timeslot = rs.getString("TimeSlot");
                 groupname = rs.getString("GroupName");
                 date = rs.getString("Date");
+                
+                
 
                 if (groupname == null) {
-
+                    
                     // make a ProfileBean object out of the values
                     aScheduleBean = new ScheduleBean(date, timeslot, groupname);
                     // add the newly created object to the collection
