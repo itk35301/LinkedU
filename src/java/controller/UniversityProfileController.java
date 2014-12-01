@@ -32,8 +32,10 @@ public class UniversityProfileController implements Serializable {
  
 
     public UniversityProfileController() {
-        uModel = (universityBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInU");;
-       
+        String uID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInU");
+        universityDAOImpl ulogin = new universityDAOImpl();
+        ArrayList uniCollection = ulogin.findByUID(uID);
+        uModel = (universityBean)uniCollection.get(0);
     }
 
     public universityBean getUModel() {

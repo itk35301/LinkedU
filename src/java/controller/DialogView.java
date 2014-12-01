@@ -9,6 +9,7 @@ public class DialogView {
  
     public String logOut() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        System.out.println("I'm here!");
         return "index?faces-redirect=true";
     }
 

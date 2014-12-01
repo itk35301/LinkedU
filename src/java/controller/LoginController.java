@@ -42,7 +42,7 @@ public class LoginController implements Serializable {
             if (studentBean.authenticate(userName, password)) {
                 ArrayList studentCollection = stulogin.findBySTUID(userName);
                 stuModel = (studentBean)studentCollection.get(0);
-               FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInStu", stuModel);
+               FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInStu", stuModel.getStuID());
 
                 
            
@@ -52,7 +52,7 @@ public class LoginController implements Serializable {
             if (universityBean.authenticate(userName, password)) {
                 ArrayList uniCollection = ulogin.findByUID(userName);
                 uModel = (universityBean)uniCollection.get(0);
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInUni", uModel);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInUni", uModel.getUid());
                 
                 return "universityProfile.xhtml";
             }

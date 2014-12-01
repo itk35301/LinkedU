@@ -15,17 +15,17 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-        <h:dataTable id="searchTable" value="#{searchController.uList}" var="aRow"
+         <h:dataTable id="searchTable" value="#{searchController.uList}" var="uRow"
                     border="1" cellpadding="2" cellspacing="0">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="University Name"/>
                 </f:facet>
-                <h:commandLink value="#{aRow.name}"/>
+                <h:commandLink value="#{uRow.name}"/>
             </h:column>
         </h:dataTable>
         <p:commandButton value="Back" id="back" action="search.xhtml"/>
         </h:form>
-        <h2>These will eventually link to university profiles</h2>
+        <h2>These will eventually link to university profiles.</h2>
     </h:body>
 </html>

@@ -25,7 +25,7 @@ and open the template in the editor.
                 <f:selectItem itemLabel="Last Name" itemValue="lName" />
                 <f:selectItem itemLabel="Intrested University" itemValue="highSchool" />
                 <f:selectItem itemLabel="Search GPA" itemValue="gpa" />
-                <f:ajax render="input1 input2 input3 input4" />
+                <f:ajax render="input1 input2 input3 input4 input5" />
             </p:selectOneRadio>
  
             <h:panelGrid columns="4" cellpadding="5">
@@ -51,7 +51,7 @@ and open the template in the editor.
             </h:panelGrid>
             <h:panelGrid columns="2" cellpadding="5">
                 <p:commandButton action="#{searchController.studentSearch}" value="Search Students" icon="ui-icon-search"/>
-                <p:commandButton action="#{searchController.showAll}" value="Show all Students"/>
+                <p:commandButton action="#{searchController.showAllStudents}" value="Show all Students"/>
             </h:panelGrid>
         </p:outputPanel>
     </h:form>    
@@ -72,7 +72,7 @@ and open the template in the editor.
             </h:panelGrid>
             <h:panelGrid columns="2" cellpadding="5">
                 <p:commandButton action="#{searchController.universitySearch}" value="Search Universities" icon="ui-icon-search"/>
-                <p:commandButton action="#{searchController.showAll}" value="Show all Universities"/>
+                <p:commandButton action="#{searchController.showAllUniversity}" value="Show all Universities"/>
             </h:panelGrid>
         </p:outputPanel>
     </h:form>

@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import model.studentBean;
 import model.universityBean;
 
@@ -59,28 +60,31 @@ public class SearchController implements Serializable {
         return "error.xhtml";
     }
     
-    public String showAll(){
+    public String showAllStudents(){
         studentDAO student = new studentDAOImpl();
         stuList = student.findAll();
         return "searchResults";
     }
-    
+        
     public String universitySearch(){
         universityDAO aUniversityDAO = new universityDAOImpl();
-        switch(searchType){
-            case "universityName":
-                uList = aUniversityDAO.findByUniversity(universityName);
-                return "universityResults";
-        }
-        
-        return "error.xhtml";
+            uList = aUniversityDAO.findByUniversity(universityName);
+            return "universityResults";
     }
     
     public String showAllUniversity(){
+        System.out.println("I'm here in showAllUniversity");
         universityDAO university = new universityDAOImpl();
         uList = university.findAll();
         return "universityResults";
     }
+    
+    public String goToStudentProfile(String ID){
+        System.out.println(ID);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("searchedStu", ID);
+        return "searchedStudentProfile?faces-redirect=true";
+    }
+    
     public String getSearchType() {
         return searchType;
     }

@@ -21,7 +21,19 @@ and open the template in the editor.
                 <f:facet name="header">
                     <h:outputText value="Student Name"/>
                 </f:facet>
-                <h:commandLink value="#{aRow.fname} #{aRow.lname}"/>
+                <h:commandLink value="#{aRow.fname} #{aRow.lname}" action="#{searchController.goToStudentProfile(aRow.stuID)}"/>
+            </h:column>
+            <h:column rendered="#{searchController.searchType == 'gpa'}">
+                <f:facet name="header">
+                    <h:outputText value="GPA"/>
+                </f:facet>
+                <h:outputText value="#{aRow.gpa}"/>
+            </h:column>
+            <h:column rendered="#{searchController.searchType == 'highSchool'}">
+                <f:facet name="header">
+                    <h:outputText value="High School"/>
+                </f:facet>
+                <h:outputText value="#{aRow.highschool}"/>
             </h:column>
         </h:dataTable>
         <p:commandButton value="Back" id="back" action="search.xhtml"/>

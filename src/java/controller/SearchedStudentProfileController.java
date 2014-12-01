@@ -6,11 +6,10 @@
 package controller;
 
 
-import dao.studentDAO;
 import dao.studentDAOImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import model.studentBean;
@@ -20,18 +19,20 @@ import model.studentBean;
  *
  * @author itk35301
  */
-@Named(value = "StudentProfileController")
-@SessionScoped
-public class StudentProfileController implements Serializable {
+@Named(value = "SearchedStudentProfileController")
+@RequestScoped
+public class SearchedStudentProfileController implements Serializable {
 
     private studentBean stuModel;
   
  
 
-    public StudentProfileController() {
+    public SearchedStudentProfileController() {
         studentDAOImpl stulogin = new studentDAOImpl();
-        String  stuID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
+        String  stuID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("searchedStu");
+        System.out.print("The sessionID passed in searched is " + stuID);
         ArrayList studentCollection = stulogin.findBySTUID(stuID);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("searchedStu");
         stuModel = (studentBean)studentCollection.get(0);
        
     }
