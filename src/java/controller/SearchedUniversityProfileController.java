@@ -9,7 +9,6 @@ package controller;
  *
  * @author itmacuser
  */
-import dao.universityDAO;
 import dao.universityDAOImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,17 +22,16 @@ import model.universityBean;
  *
  * @author itk35301
  */
-@Named(value = "UniversityProfileController")
+@Named(value = "SearchedUniversityProfileController")
 @SessionScoped
-public class UniversityProfileController implements Serializable {
+public class SearchedUniversityProfileController implements Serializable {
 
     private universityBean uModel;
   
  
 
-    public UniversityProfileController() {
-        String uID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInUni");
-        System.out.println(uID);
+    public SearchedUniversityProfileController() {
+        String uID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("searchedUni");
         universityDAOImpl ulogin = new universityDAOImpl();
         ArrayList uniCollection = ulogin.findByUID(uID);
         uModel = (universityBean)uniCollection.get(0);
@@ -47,7 +45,4 @@ public class UniversityProfileController implements Serializable {
         this.uModel = uModel;
     }
     
-    
-    
 }
-

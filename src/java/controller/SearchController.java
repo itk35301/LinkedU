@@ -85,6 +85,12 @@ public class SearchController implements Serializable {
         return "searchedStudentProfile?faces-redirect=true";
     }
     
+     public String goToUniversityProfile(String ID){
+        System.out.println(ID);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("searchedUni", ID);
+        return "searchedUniversityProfile?faces-redirect=true";
+    }
+    
     public String getSearchType() {
         return searchType;
     }

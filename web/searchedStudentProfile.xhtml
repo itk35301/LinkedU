@@ -51,7 +51,7 @@ and open the template in the editor.
 
                         <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
                             <h:panelGrid  columns="2" cellpadding="10">
-                                <p:graphicImage  width="150" height="171" name="images/#{SearchedStudentProfileController.stuModel.profilePic}" />
+                            <p:graphicImage  width="150" height="171" name="images/#{SearchedStudentProfileController.stuModel.profilePic}" />
                                 <h:outputText value="#{SearchedStudentProfileController.stuModel.about}" />
                                 <p:commandButton id="imageBtn" value="View Gallery" type="button" />
                                 <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >

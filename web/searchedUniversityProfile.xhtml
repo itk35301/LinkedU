@@ -16,7 +16,7 @@ and open the template in the editor.
             <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>University Profile</title>
+                <title>Profile</title>
             </f:facet>
         </h:head>
 
@@ -37,24 +37,9 @@ and open the template in the editor.
                 <p:layoutUnit position="west"  resizable="true" size="200" header="Hide" collapsible="true">
 
                     <h:form>
-
-                        <p:commandButton value="Edit Profile" />          
-                        <p:commandButton value="Upload Media" id="uploadBtn"  />
-                        <p:overlayPanel  id="imagePanel" dismissable="true" for="uploadBtn" hideEffect="fade" showCloseIcon="true" >
-                            <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
-                            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}"/>
-                        </p:overlayPanel>
-                        <p:commandButton value="Log Out" action="#{dialogView.logOut()}">
-                            <p:confirm header="Confirmation" message="Are you sure you want to log out?" icon="ui-icon-alert" />
-                        </p:commandButton>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="index?faces-redirect=true"/>
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                        </p:confirmDialog>
-
-
+                        <p:commandButton value="Home" action="universityProfile?faces-redirect=true"/>          
                     </h:form>
-
+                    
                 </p:layoutUnit>
 
 
@@ -65,10 +50,10 @@ and open the template in the editor.
                         <p:growl id="msgs" showDetail="true" />
 
                         <p:panel id="about" header="About Me" footer="About" style="margin-bottom:20px">
-                            <h:outputText  style="font-size: 200%" value="#{UniversityProfileController.UModel.name}"/>
+                            <h:outputText  style="font-size: 200%" value="#{SearchedUniversityProfileController.UModel.name}"/>
                             <h:panelGrid  columns="2" cellpadding="10">
-                                <p:graphicImage  width="150" height="171" name="images/#{UniversityProfileController.UModel.profilePic}" />
-                                <h:outputText value="#{UniversityProfileController.UModel.about}" />
+                                <p:graphicImage  width="150" height="171" name="images/#{SearchedUniversityProfileController.UModel.profilePic}" />
+                                <h:outputText value="#{SearchedUniversityProfileController.UModel.about}" />
                                 <p:commandButton id="imageBtn" value="View Gallery" type="button" />
                                 <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
                                     <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
@@ -76,14 +61,14 @@ and open the template in the editor.
                                     </p:galleria>
                                 </p:overlayPanel>
                             </h:panelGrid>
-                            Average Tuition: <h:outputText value="#{UniversityProfileController.UModel.avgTuition}"/>
+                            Average Tuition: <h:outputText value="#{SearchedUniversityProfileController.UModel.avgTuition}"/>
 
 
                         </p:panel>
-                        <p:panel id="contact" header="Tuition" footer="Contact Information" style="margin-bottom:20px">
+                        <p:panel id="Tuition" header="Contact" footer="Contact Information" style="margin-bottom:20px">
 
 
-                            Tuition: <h:outputText value="#{UniversityProfileController.UModel.avgTuition}"/><br/>
+                            Tuition: <h:outputText value="#{SearchedUniversityProfileController.UModel.avgTuition}"/><br/>
 
                         </p:panel>
 
@@ -91,10 +76,10 @@ and open the template in the editor.
 
                     <h:form>  
                         <p:panel id="location" header="Location" footer="University Location" style="margin-bottom:20px">
-                            Location: <h:outputText value="#{UniversityProfileController.UModel.location}"/><br/>  
-                       <!--     <p:gmap id="geoGmap" widgetVar="geoMap" center="#{geocodeView.centerGeoMap}" zoom="2" type="ROADMAP" model="#{geocodeView.geoModel}" style="width:100%;height:400px">
+                            Location: <h:outputText value="#{SearchedUniversityProfileController.UModel.location}"/><br/>  
+                        <!--    <p:gmap id="geoGmap" widgetVar="geoMap" center="#{geocodeView.centerGeoMap}" zoom="2" type="ROADMAP" model="#{geocodeView.geoModel}" style="width:100%;height:400px">
                                 <p:ajax event="geocode" listener="#{geocodeView.onGeocode}" update="@this" />
-                            </p:gmap>              -->     
+                            </p:gmap>   -->                
                         </p:panel>
                     </h:form>
                     <p:panel id="appointment" header="Schedule an Appointment" footer="Appointment" style="margin-bottom:20px">

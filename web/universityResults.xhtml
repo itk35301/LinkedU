@@ -21,7 +21,7 @@ and open the template in the editor.
                 <f:facet name="header">
                     <h:outputText value="University Name"/>
                 </f:facet>
-                <h:commandLink value="#{uRow.name}"/>
+                <h:commandLink value="#{uRow.name}" action="#{searchController.goToUniversityProfile(uRow.uid)}"/>
             </h:column>
         </h:dataTable>
         <p:commandButton value="Back" id="back" action="search.xhtml"/>
