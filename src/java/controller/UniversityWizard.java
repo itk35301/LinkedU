@@ -1,11 +1,11 @@
 package controller;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import org.primefaces.event.FlowEvent;
  
-@ManagedBean
+@Named(value = "UniversityWizard")
 @ViewScoped
 public class UniversityWizard implements Serializable {
  
