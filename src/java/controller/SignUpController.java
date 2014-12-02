@@ -23,6 +23,7 @@ public class SignUpController implements Serializable {
     private String userName;
     private String password;
     private String email;
+    private String passwordConfirm;
 
     public SignUpController() {
         theStudent = new studentBean();
@@ -99,6 +100,14 @@ public class SignUpController implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
     
     
