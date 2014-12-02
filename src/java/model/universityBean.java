@@ -25,12 +25,16 @@ public class universityBean {
     private String about;
     private String photogalleryid;
     private String vidgalleryid;
+    private String phone;
+    private String email;
+    private String city;
+    private String state;
     
 
     public universityBean(){
         
     }
-    public universityBean(String uid, String password, String profilePic, String uName, String location, String avgTuition, String highlighted, String about, String vidgalleryid, String photogalleryid){
+    public universityBean(String uid, String password, String profilePic, String uName, String location, String avgTuition, String highlighted, String about, String vidgalleryid, String photogalleryid, String phone, String email, String city, String state){
         this.name = uName;
         this.location = location;
         this.avgTuition = avgTuition;
@@ -41,6 +45,10 @@ public class universityBean {
         this.password = password;
         this.photogalleryid = photogalleryid;
         this.vidgalleryid = vidgalleryid;
+        this.phone = phone;
+        this.email = email;
+        this.city = city;
+        this.state = state;
     }
 
     public String getName() {
@@ -146,5 +154,61 @@ public class universityBean {
         }
         else
             return false;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * @return the state
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(String state) {
+        this.state = state;
     }
 }

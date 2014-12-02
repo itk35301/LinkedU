@@ -53,6 +53,10 @@ public class universityDAOImpl implements universityDAO{
                 + "','" + aUniversity.isHighlighted()
                 + "','" + aUniversity.getLocation()
                 + "','" + aUniversity.getAvgTuition()
+                + "','" + aUniversity.getPhone()
+                + "','" + aUniversity.getEmail()
+                + "','" + aUniversity.getCity()
+                + "','" + aUniversity.getState()
                 + "')";
             
             rowCount = stmt.executeUpdate(insertString);
@@ -152,7 +156,7 @@ public class universityDAOImpl implements universityDAO{
             
             Statement stmt = DBConn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            String id, password, profilePic, uName, location, avgTuition, highlighted, about, vidgalleryid, photogalleryid;
+            String id, password, profilePic, uName, location, avgTuition, highlighted, about, vidgalleryid, photogalleryid, phone, email, city, state;
             
             
             universityBean aUniversity;
@@ -167,8 +171,12 @@ public class universityDAOImpl implements universityDAO{
                 highlighted = rs.getString("HIGHLIGHTED");
                 location = rs.getString("LOCATION");
                 avgTuition = rs.getString("AVGTUITION");
+                phone = rs.getString("PHONE");
+                email = rs.getString("EMAIL");
+                city = rs.getString("CITY");
+                state = rs.getString("STATE");
                 
-                aUniversity = new universityBean(id, password, profilePic, uName, location, avgTuition, highlighted, about, vidgalleryid, photogalleryid);
+                aUniversity = new universityBean(id, password, profilePic, uName, location, avgTuition, highlighted, about, vidgalleryid, photogalleryid, phone, email, city, state);
                 aUniversityCollection.add(aUniversity);
             }
             rs.close();

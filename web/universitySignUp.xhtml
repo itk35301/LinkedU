@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pa="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Student Sign Up page</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:wizard flowListener="#{UniversityWizard.onFlowProcess}">
+                <p:tab id="University" title="University">
+                    <p:panel header="University Details">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
+                            <h:outputText value="University Name:"/>
+                            <h:inputText id ="uname" value ="#{signUpController.theUniversity.name}" required="true" label="Name"/>
+                            <h:message for="uname" errorStyle="color:red; display:block" />
+                        
+                            <h:outputText value="Email:"/>
+                            <h:inputText id ="email" value ="#{signUpController.theUniversity.email}" required="true" label="Email"/>
+                            <h:message for="email" errorStyle="color:red; display:block" />
+                        
+                            <h:outputText value="Phone:"/>
+                            <h:inputText id ="phone" value ="#{signUpController.theUniversity.phone}" required="true" label="Phone"/>
+                            <h:message for="phone" errorStyle="color:red; display:block" />
+                            
+                            <h:outputText value="Average Tuition:"/>
+                            <h:inputText id ="tuition" value ="#{signUpController.theUniversity.avgTuition}" required="true" label="Tuition"/>
+                            <h:message for="tuition" errorStyle="color:red; display:block" />
+                           
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="schoolInfo" title="About">
+                    <p:panel header="About the university">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
+                            <h:outputText value="About:"/>
+                            <h:inputText id ="about" value ="#{signUpController.theUniversity.about}" required="true" label="about"/>
+                            <h:message for="about" errorStyle="color:red; display:block" />
+                            
+                            <h:outputText value="Address:"/>
+                            <h:inputText id ="address" value ="#{signUpController.theUniversity.location}" required="true" label="Last Name"/>
+                            <h:message for="address" errorStyle="color:red; display:block" />
+                        
+                            <h:outputText value="City:"/>
+                            <h:inputText id ="city" value ="#{signUpController.theUniversity.city}" required="true" label="Last Name"/>
+                            <h:message for="city" errorStyle="color:red; display:block" />
+                            
+                            <h:outputText value="state"/>
+                            <h:inputText id ="state" value ="#{signUpController.theUniversity.state}" required="true" label="Phone"/>
+                            <h:message for="state" errorStyle="color:red; display:block" />
+                        </h:panelGrid>
+                        
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="loginInfo" title="Login Info">
+                    <p:panel header="Login Information">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
+                            <h:outputText value="User Name:"/>
+                            <h:inputText id="UID" value="#{signUpController.theUniversity.uid}" required="true"/>
+                            <h:message for="UID" errorStyle="color:red; display:block" />
+                            
+                            <h:outputText value="Password:"/>
+                            <h:inputSecret id="password" value="#{signUpController.theUniversity.password}" required="true"/>
+                            <h:message for="password" errorStyle="color:red; display:block" />
+                            
+                            <h:outputText value="Password Confirm:"/>
+                            <h:inputSecret id="passwordConfirm" value="#{signUpController.passwordConfirm}">
+                                <f:validator validatorId="passwordValidator" />
+                            </h:inputSecret>
+                            <h:message for="passwordConfirm" errorStyle="color:red; display:block" />
+                           
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="confirm" title="Confirmation">
+                    <p:panel header="Confirmation">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid,grid">
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="University Name:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.name}"/>
+                        
+                                <h:outputText value="Email:"/>
+                                <h:outputText value="#{signUpController.theUniversity.email}"/>
+                                
+                                <h:outputText value="Phone:"/>
+                                <h:outputText value="#{signUpController.theUniversity.phone}"/>
+                        
+                                <h:outputText value="Average Tuition:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.avgTuition}"/>
+                            </h:panelGrid>
+                        
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="About:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.about}"/>
+                                
+                                <h:outputText value="Address:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.location}"/>
+                                
+                                <h:outputText value="City:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.city}"/>
+                                
+                                <h:outputText value="State:"/>
+                                <h:outputText value ="#{signUpController.theUniversity.state}"/>
+                           </h:panelGrid>
+                        
+                        
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="User Name:"/>
+                                <h:outputText value="#{signUpController.theUniversity.uid}"/>
+                            
+                                <h:outputText value="Password:"/>
+                                <h:outputText value="#{signUpController.theUniversity.password}"/>
+                            
+                                
+                           </h:panelGrid>
+                        </h:panelGrid>
+                        <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpCompleteUniversity()}" />
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+        </h:form>
+    </h:body>
+</html>
