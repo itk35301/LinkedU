@@ -65,18 +65,43 @@ and open the template in the editor.
 
 
                         </p:panel>
-                        <p:panel id="Tuition" header="Contact" footer="Contact Information" style="margin-bottom:20px">
+                        <p:panel id="contact" header="Contact Information" footer="Contact Information" style="margin-bottom:20px">
+                            Email: <h:outputText value="#{UniversityProfileController.UModel.email}"/><br/>
+                            Phone: <h:outputText value="#{UniversityProfileController.UModel.phone}"/><br/><br/>
 
+                            <h:outputText style="font-weight:bold" value="Request more information:"/><br/> 
+                            First Name: <p:inputText value="#{inforequestController.fname}"> 
+                                <f:validateLength minimum="2" maximum="25"/>
+                            </p:inputText><br/>
+                            Last Name: <p:inputText value="#{inforequestController.lname}">
+                                <f:validateLength minimum="2" maximum="25"/>
+                            </p:inputText><br/>
+                            Email: <p:inputText id="email" required="true" label="email" size="40"
+                                                requiredMessage="Please enter your email address."
+                                                validatorMessage="Invalid email format"
+                                                value="#{inforequestController.email}">
 
-                            Tuition: <h:outputText value="#{SearchedUniversityProfileController.UModel.avgTuition}"/><br/>
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 
+                            </p:inputText><br/>
+                            Phone: <p:inputText value="#{inforequestController.phone}">
+                                <f:validateLength minimum="7" />
+                            </p:inputText><br/> 
+                            Preferred method of contact: <p:inputText value="#{inforequestController.preference}"/><br/> 
+                            <p:commandButton   value="Submit" action="#{inforequestController.sendEmail()}">
+                                <f:ajax render="message" listener="#{inforequestController.handleEvent}" />
+                            </p:commandButton>
+                            <h:outputText id="message" value="#{inforequestController.message}" />               
                         </p:panel>
 
                     </h:form>
 
                     <h:form>  
                         <p:panel id="location" header="Location" footer="University Location" style="margin-bottom:20px">
-                            Location: <h:outputText value="#{SearchedUniversityProfileController.UModel.location}"/><br/>  
+                            Address: <h:outputText value="#{SearchedUniversityProfileController.UModel.location}"/><br/>
+                            City: <h:outputText value="#{SearchedUniversityProfileController.UModel.city}"/><br/>
+                            State: <h:outputText value="#{SearchedUniversityProfileController.UModel.state}"/><br/>
                         <!--    <p:gmap id="geoGmap" widgetVar="geoMap" center="#{geocodeView.centerGeoMap}" zoom="2" type="ROADMAP" model="#{geocodeView.geoModel}" style="width:100%;height:400px">
                                 <p:ajax event="geocode" listener="#{geocodeView.onGeocode}" update="@this" />
                             </p:gmap>   -->                
