@@ -36,6 +36,15 @@ public class SearchedUniversityProfileController implements Serializable {
         ArrayList uniCollection = ulogin.findByUID(uID);
         uModel = (universityBean)uniCollection.get(0);
     }
+    
+    public String goHome(){
+        String stuID =  (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
+        
+        if(stuID != null){
+            return "studentProfile?faces-redirect=true";
+        }else
+            return "universityProfile?faces-redirect=true";
+    }
 
     public universityBean getUModel() {
         return uModel;

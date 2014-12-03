@@ -37,6 +37,15 @@ public class SearchedStudentProfileController implements Serializable {
        
     }
 
+    public String goHome(){
+        String stuID =  (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
+        
+        if(stuID != null){
+            return "studentProfile?faces-redirect=true";
+        }else
+            return "universityProfile?faces-redirect=true";
+    }
+    
     public studentBean getStuModel() {
         return stuModel;
     }
