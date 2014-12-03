@@ -37,24 +37,19 @@ and open the template in the editor.
                 <p:layoutUnit position="west"  resizable="true" size="200" header="Hide" collapsible="true">
 
                     <h:form>
-
                         <p:commandButton value="Edit Profile" />          
-                        <p:commandButton value="Upload Media" id="uploadBtn"  />
+                   <p:commandButton value="Upload Media" id="uploadBtn"  />
                         <p:overlayPanel  id="imagePanel" dismissable="true" for="uploadBtn" hideEffect="fade" showCloseIcon="true" >
                             <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
                             <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}"/>
                         </p:overlayPanel>
-                        <p:commandButton value="Schedule Appointment" action="appointment.xhtml"/>
-                        <p:commandButton value="Log Out" action="#{dialogView.logOut()}">
+                        <p:commandButton value="Log Out" action="#{dialogView.logOut}">
                             <p:confirm header="Confirmation" message="Are you sure you want to log out?" icon="ui-icon-alert" />
                         </p:commandButton>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                             <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="index?faces-redirect=true"/>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
-                        
-
-
                     </h:form>
 
                 </p:layoutUnit>
@@ -106,6 +101,6 @@ and open the template in the editor.
             </p:layout>
 
         </h:body>
-
+        
     </f:view>
 </html>

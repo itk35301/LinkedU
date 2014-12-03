@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/web/searchResults.xhtml</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/controller/SearchController.java</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/dao/studentDAO.java</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/dao/studentDAOImpl.java</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/web/search.xhtml</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/dao/universityDAO.java</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/dao/universityDAOImpl.java</file>
-            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/web/universityResults.xhtml</file>
+            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/controller/PasswordRetrieveController.java</file>
+            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/web/passwordRetrieve.xhtml</file>
+            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/web/passwordRetrieveConfirm.xhtml</file>
+            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/dao/PasswordRetrieveDAOImpl.java</file>
+            <file>file:/C:/Users/Huan_Nguyen/Documents/NetBeansProjects/LinkedU/src/java/model/PasswordRetrievalBean.java</file>
         </group>
     </open-files>
 </project-private>

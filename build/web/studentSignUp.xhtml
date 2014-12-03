@@ -15,64 +15,83 @@ and open the template in the editor.
         <title>Student Sign Up page</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="form">
             <p:wizard flowListener="#{studentWizard.onFlowProcess}">
                 <p:tab id="personal" title="Personal">
                     <p:panel header="Personal Details">
-                        <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="First Name:"/>
-                            <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}"/>
+                            <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}" required="true" label="First Name"/>
+                            <h:message for="fName" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Last Name:"/>
-                            <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}"/>
+                            <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}" required="true" label="Last Name"/>
+                            <h:message for="lName" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Phone Number:"/>
-                            <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}"/>
+                            <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}" required="true" label="Phone"/>
+                            <h:message for="phone" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
                 
                 <p:tab id="schoolInfo" title="High School">
                     <p:panel header="High School Information">
-                        <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="High School:"/>
-                            <h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}"/>
+                            <h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}" required="true" label="High School"/>
+                            <h:message for="highschool" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Experience:"/>
-                            <h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}"/>
+                            <h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}" required="true" label="Experience"/>
+                            <h:message for="experience" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="GPA:"/>
-                            <h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}"/>
+                            <h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}" required="true" label="GPA"/>
+                            <h:message for="gpa" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
                 
                 <p:tab id="aboutMe" title="About Me">
                     <p:panel header="About me Section">
-                        <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="About Me:"/>
-                            <h:inputTextarea id="about" value="#{signUpController.theStudent.about}"/>
+                            <h:inputTextarea id="about" value="#{signUpController.theStudent.about}" required="true" label="About"/>
+                            <h:message for="about" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Interests:"/>
-                            <h:inputTextarea id="interests" value="#{signUpController.theStudent.interests}"/>
+                            <h:inputTextarea id="interests" value="#{signUpController.theStudent.interests}" required="true" label="Interests"/>
+                            <h:message for="interests" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Desired Major:"/>
-                            <h:inputText id ="major" value ="#{signUpController.theStudent.major}"/>
+                            <h:inputText id ="major" value ="#{signUpController.theStudent.major}" required="true" label="Major"/>
+                            <h:message for="major" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
                 
                 <p:tab id="loginInfo" title="Login Info">
                     <p:panel header="Login Information">
-                        <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="User Name:"/>
-                            <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}"/>
+                            <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}" required="true"/>
+                            <h:message for="stuID" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Password:"/>
-                            <h:inputSecret id="password" value="#{signUpController.theStudent.password}"/>
+                            <h:inputSecret id="password" value="#{signUpController.theStudent.password}" required="true"/>
+                            <h:message for="password" errorStyle="color:red; display:block" />
                             
-                            <h:outputText value="Email:"/>
-                            <h:inputText id="email" value="#{signUpController.theStudent.email}"/>
+                            <h:outputText value="Password Confirm:"/>
+                            <h:inputSecret id="passwordConfirm" value="#{signUpController.passwordConfirm}">
+                                <f:validator validatorId="passwordValidator" />
+                            </h:inputSecret>
+                            <h:message for="passwordConfirm" errorStyle="color:red; display:block" />
+                            
+                            
+                            <h:outputText value="Email:" />
+                            <h:inputText id="email" value="#{signUpController.theStudent.email}" required="true" label="Email"/>
+                            <h:message for="email" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -124,7 +143,7 @@ and open the template in the editor.
                                <h:outputText value="#{signUpController.theStudent.email}"/>
                            </h:panelGrid>
                         </h:panelGrid>
-                        <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpComplete()}" />
+                        <p:commandButton value="Finish Sign Up"  id="signUp" action="#{signUpController.signUpCompleteStudent()}" />
                     </p:panel>
                 </p:tab>
             </p:wizard>
