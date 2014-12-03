@@ -21,11 +21,19 @@ and open the template in the editor.
                     <p:panel header="Personal Details">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="First Name:"/>
-                            <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}" required="true" label="First Name"/>
+                            <h:inputText id ="fName" value ="#{signUpController.theStudent.fname}" required="true" label="First Name">
+                                <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                            </h:inputText>
                             <h:message for="fName" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Last Name:"/>
-                            <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}" required="true" label="Last Name"/>
+                            <h:inputText id ="lName" value ="#{signUpController.theStudent.lname}" required="true" label="Last Name">
+                                <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                            </h:inputText>
                             <h:message for="lName" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Phone Number:"/>
@@ -39,15 +47,25 @@ and open the template in the editor.
                     <p:panel header="High School Information">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="High School:"/>
-                            <h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}" required="true" label="High School"/>
+                            <h:inputText id ="highschool" value ="#{signUpController.theStudent.highschool}" required="true" label="High School">
+                                <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                            </h:inputText>
                             <h:message for="highschool" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Experience:"/>
-                            <h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}" required="true" label="Experience"/>
+                            <h:inputTextarea id="experience" value="#{signUpController.theStudent.experience}" required="true" label="Experience">
+                                <f:validateLength
+                                minimum ="2"
+                                maximum ="255"/>
+                            </h:inputTextarea>
                             <h:message for="experience" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="GPA:"/>
-                            <h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}" required="true" label="GPA"/>
+                            <h:inputText id ="gpa" value ="#{signUpController.theStudent.gpa}" required="true" label="GPA" validatorMessage="Please enter a valid GPA in this style (4.00).">
+                                <f:validateRegex pattern="^[0]|[0-3]\.(\d?\d?)|[4].[0]$"/>
+                            </h:inputText>
                             <h:message for="gpa" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
@@ -75,11 +93,17 @@ and open the template in the editor.
                     <p:panel header="Login Information">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="User Name:"/>
-                            <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}" required="true"/>
+                            <h:inputText id="stuID" value="#{signUpController.theStudent.stuID}" required="true">
+                                <f:validator validatorId="userIDValidator"/>
+                            </h:inputText>
                             <h:message for="stuID" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Password:"/>
-                            <h:inputSecret id="password" value="#{signUpController.theStudent.password}" required="true"/>
+                            <h:inputSecret id="password" value="#{signUpController.theStudent.password}" required="true">
+                                <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                            </h:inputSecret>
                             <h:message for="password" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Password Confirm:"/>
@@ -90,7 +114,9 @@ and open the template in the editor.
                             
                             
                             <h:outputText value="Email:" />
-                            <h:inputText id="email" value="#{signUpController.theStudent.email}" required="true" label="Email"/>
+                            <h:inputText id="email" value="#{signUpController.theStudent.email}" required="true" label="Email">
+                                <f:validator validatorId="emailValidator" />
+                            </h:inputText>
                             <h:message for="email" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>

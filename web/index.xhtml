@@ -27,11 +27,12 @@
                     <h:message for="userName" errorStyle="color:red; display:block" />
                     <h:inputText id="email" value="#{signUpController.email}" label="E-mail" pa:placeholder="Email" styleClass="signUpText" required="true"/>
                     <h:message for="email" errorStyle="color:red; display:block" /><br/>
-                    <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}">
-                                <f:selectItem itemValue="select" itemLabel="Select Sign Up Type"/>
+                    <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}" required="true" label="Sign Up Type" >
+                                <f:selectItem itemValue="select" itemLabel="Select Sign Up Type" noSelectionOption="true"/>
                                 <f:selectItem itemValue="student" itemLabel="Student"/>
                                 <f:selectItem itemValue="university" itemLabel="University"/>
                     </h:selectOneMenu>
+                    <h:message for="signUpType" errorStyle="color:red; display:block" /><br/>
                     <h:commandButton value="Sign Up" id="signUpButton" styleClass="signUpButton" action="#{signUpController.signUpPartOne()}"/>
                 </h:form>
                 <h:form>
