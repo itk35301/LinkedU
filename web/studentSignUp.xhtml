@@ -37,7 +37,9 @@ and open the template in the editor.
                             <h:message for="lName" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Phone Number:"/>
-                            <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}" required="true" label="Phone"/>
+                            <h:inputText id ="phone" value ="#{signUpController.theStudent.phone}" required="true" label="Phone" validatorMessage="Please enter a valid phone number,(123)456-7890, 123-456-5678, 123456789 ">
+                                 <f:validateRegex pattern="^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}" />
+                                </h:inputText>
                             <h:message for="phone" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                     </p:panel>
