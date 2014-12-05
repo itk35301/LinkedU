@@ -21,19 +21,32 @@ and open the template in the editor.
                     <p:panel header="University Details">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="University Name:"/>
-                            <h:inputText id ="uname" value ="#{signUpController.theUniversity.name}" required="true" label="Name"/>
+                            <h:inputText id ="uname" value ="#{signUpController.theUniversity.name}" required="true" label="Name">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                                      </h:inputText>
                             <h:message for="uname" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="Email:"/>
-                            <h:inputText id ="email" value ="#{signUpController.theUniversity.email}" required="true" label="Email"/>
+                            <h:inputText id ="email" value ="#{signUpController.theUniversity.email}" required="true" label="Email">
+                            <f:validator validatorId="emailValidator" />
+                            </h:inputText>
                             <h:message for="email" errorStyle="color:red; display:block" />
-                        
+                         
                             <h:outputText value="Phone:"/>
-                            <h:inputText id ="phone" value ="#{signUpController.theUniversity.phone}" required="true" label="Phone"/>
+                            <h:inputText id ="phone" value ="#{signUpController.theUniversity.phone}" required="true" label="Phone" validatorMessage="Please enter a valid phone number,(123)456-7890, 123-456-5678, 123456789 ">
+                                <!--http://www.regexlib.com/ -->
+                             <f:validateRegex pattern="^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}" />
+                             </h:inputText>
                             <h:message for="phone" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Average Tuition:"/>
-                            <h:inputText id ="tuition" value ="#{signUpController.theUniversity.avgTuition}" required="true" label="Tuition"/>
+                            <h:inputText id ="tuition" value ="#{signUpController.theUniversity.avgTuition}" required="true" label="Tuition">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="7"/>
+                            </h:inputText>
                             <h:message for="tuition" errorStyle="color:red; display:block" />
                            
                         </h:panelGrid>
@@ -44,19 +57,36 @@ and open the template in the editor.
                     <p:panel header="About the university">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="About:"/>
-                            <h:inputText id ="about" value ="#{signUpController.theUniversity.about}" required="true" label="about"/>
+                            <h:inputText id ="about" value ="#{signUpController.theUniversity.about}" required="true" label="about">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="255"/>
+                                      </h:inputText>
                             <h:message for="about" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Address:"/>
-                            <h:inputText id ="address" value ="#{signUpController.theUniversity.location}" required="true" label="Last Name"/>
+                            <h:inputText id ="address" value ="#{signUpController.theUniversity.location}" required="true" label="Last Name">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="255"/>
+                                      </h:inputText>
                             <h:message for="address" errorStyle="color:red; display:block" />
                         
                             <h:outputText value="City:"/>
-                            <h:inputText id ="city" value ="#{signUpController.theUniversity.city}" required="true" label="Last Name"/>
+                            <h:inputText id ="city" value ="#{signUpController.theUniversity.city}" required="true" label="Last Name">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="32"/>
+                                      </h:inputText>
                             <h:message for="city" errorStyle="color:red; display:block" />
                             
+                            
                             <h:outputText value="state"/>
-                            <h:inputText id ="state" value ="#{signUpController.theUniversity.state}" required="true" label="Phone"/>
+                            <h:inputText id ="state" value ="#{signUpController.theUniversity.state}" required="true" label="Phone">
+                                      <f:validateLength
+                                minimum ="2"
+                                maximum ="13"/>
+                             </h:inputText>
                             <h:message for="state" errorStyle="color:red; display:block" />
                         </h:panelGrid>
                         
@@ -67,7 +97,9 @@ and open the template in the editor.
                     <p:panel header="Login Information">
                         <h:panelGrid columns="3" columnClasses="label, value, error">
                             <h:outputText value="User Name:"/>
-                            <h:inputText id="UID" value="#{signUpController.theUniversity.uid}" required="true"/>
+                            <h:inputText id="UID" value="#{signUpController.theUniversity.uid}" required="true">
+                            <f:validator validatorId="userIDValidator"/>
+                            </h:inputText>
                             <h:message for="UID" errorStyle="color:red; display:block" />
                             
                             <h:outputText value="Password:"/>
