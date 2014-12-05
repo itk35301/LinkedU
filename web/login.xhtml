@@ -55,9 +55,9 @@
             <h2>Log In</h2>
             <h:panelGroup layout="block">
                 <h:form class="loginUpForm">
-                 <h:inputText id="loginUsername"  pa:placeholder="Username" styleClass="signUpText" value="#{LoginController.userName}"/>
-                 <h:inputSecret id="loginPassword"  pa:placeholder="Password" styleClass="signUpText"  value="#{LoginController.password}"/>
-                 <h:commandButton value="Log In" styleClass="signUpButton"  id="logInButton" action="#{LoginController.login()}"/>
+                 <h:inputText id="loginUsername"  pa:placeholder="Username" styleClass="signUpText" value="#{loginController.userName}"/>
+                 <h:inputSecret id="loginPassword"  pa:placeholder="Password" styleClass="signUpText"  value="#{loginController.password}"/>
+                 <h:commandButton value="Log In" styleClass="signUpButton"  id="logInButton" action="#{loginController.login()}"/>
                 </h:form>
                 <h:form>
                   Not a user?<h:commandButton value="Back" styleClass="logInButton" id="signUpButton" action="index"/>

@@ -20,7 +20,7 @@ import model.universityBean;
  *
  * @author itk35301
  */
-@Named(value = "LoginController")
+@Named(value = "loginController")
 @SessionScoped
 public class LoginController implements Serializable {
 

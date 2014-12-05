@@ -128,15 +128,15 @@ public class InfoRequestController implements Serializable {
         String from = this.email;
 
         // Assuming you are sending email from this host
-        String host = "smtp.ilstu.edu";
+        String host = "smtp.gmail.com.";
 
         // Get system properties
         Properties properties = System.getProperties();
 
         // Setup mail server
         properties.setProperty("mail.smtp.host", host);
-        properties.setProperty("mail.user", "kmbraul@ilstu.edu"); // if needed
-        properties.setProperty("mail.password", "ppiceee8"); // if needed
+        properties.setProperty("mail.user", "mightykyle15@gmail.com"); // if needed
+        properties.setProperty("mail.password", "ppiceee1"); // if needed
 
         // Get the default Session object.
         Session session = Session.getDefaultInstance(properties);
