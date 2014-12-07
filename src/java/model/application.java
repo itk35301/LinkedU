@@ -12,7 +12,7 @@ package model;
  */
 public class application {
    
-   private String recid;
+  
    private String stuid;
    private String letter;
    private String date;
@@ -33,13 +33,6 @@ public class application {
         this.date = date;
     }
 
-    public String getRecid() {
-        return recid;
-    }
-
-    public void setRecid(String recid) {
-        this.recid = recid;
-    }
 
     public String getStuid() {
         return stuid;

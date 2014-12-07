@@ -6,7 +6,7 @@
 package dao;
 
 import java.util.ArrayList;
-import model.universityBean;
+import model.application;
 
 /**
  *
@@ -14,9 +14,6 @@ import model.universityBean;
  */
 public interface applicationDAO {
     
-    public int createUniversity(universityBean aUniversity);
+    public int createApplication(application application);
     public ArrayList findByUID(String aUID);
-    public int updatePassword(universityBean aUniversity);
-    public int updateName(universityBean aUniversity);
-    public ArrayList findHighlighted();
 }

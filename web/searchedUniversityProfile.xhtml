@@ -39,7 +39,7 @@ and open the template in the editor.
                     <h:form>
                         <p:commandButton value="Home" action="#{SearchedUniversityProfileController.goHome}"/>          
                     </h:form>
-                    
+
                 </p:layoutUnit>
 
 
@@ -118,6 +118,18 @@ and open the template in the editor.
                             </h:selectOneMenu><br/>
                             <h:commandButton value="Schedule"
                                              action="#{scheduleController.setSchedule()}" />
+                        </h:form>
+                    </p:panel>
+                    <p:panel id="apply" header="Apply" footer="Apply to University" style="margin-bottom:20px">
+                        <h:form>
+                            <h:outputText value="Please fill out your application letter below: "/><br/>
+
+                            <h:panelGrid>
+
+                                <h:inputTextarea value="#{ApplicationController.app.letter}" />
+                                <h:commandButton value="Apply" action="#{ApplicationController.Apply()}"/>
+                            </h:panelGrid>
+
                         </h:form>
                     </p:panel>
                 </p:layoutUnit>

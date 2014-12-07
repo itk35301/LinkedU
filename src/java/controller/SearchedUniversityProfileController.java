@@ -27,7 +27,7 @@ import model.universityBean;
 public class SearchedUniversityProfileController implements Serializable {
 
     private universityBean uModel;
-  
+    
  
 
     public SearchedUniversityProfileController() {
