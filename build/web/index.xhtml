@@ -12,41 +12,9 @@
         <h:outputStylesheet library="css" name="testCSS.css"  />
     </h:head>
     <h:body>
-        <!--  <div class="transBackground">
-    <h:form id="form">
-    <h3 style="margin-top: 0">Featured Universities</h3>
-    <p:ring id="basic" value="#{ringView.universities}" var="university">
-        <p:outputPanel style="text-align: center;" layout="block">
-            #{university.name}
-            <br />
-            <p:commandButton update=":form:universityDetail" icon="ui-icon-search" title="View" oncomplete="PF('universityDialog').show();">
-                <f:setPropertyActionListener value="#{university}" target="#{ringView.selectedUniversity}" />
-            </p:commandButton>
-        </p:outputPanel>
-    </p:ring>
-    
-    <p:dialog header="University Info" widgetVar="universityDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="350">
-        <p:outputPanel id="universityDetail" style="text-align:center;" layout="block">
-            <p:panelGrid  columns="2" rendered="#{not empty ringView.selectedUniversity}" columnClasses="value">
-                <f:facet name="header">
-                    #{ringView.selectedUniversity.name}
-                    <p:graphicImage name="images/#{ringView.selectedUniversity.name}.jpg" />
-                </f:facet>
-                
-                <h:outputText value="Location" />
-                <h:outputText value="#{ringView.selectedUniversity.location}" />
- 
-                <h:outputText value="Name: " />
-                <h:outputText value="#{ringView.selectedUniversity.name}" />
- 
-                <h:outputText value="Average Tuition:" />
-                <h:outputText value="#{ringView.selectedUniversity.avgTuition}"/>
-            </p:panelGrid>
-        </p:outputPanel>
-    </p:dialog>
-    </h:form>
-    </div>
-  -->
+        <div align="center">
+            <h:graphicImage name="/images/frontPageLogo.png"/>
+        </div>
     <div class="content">
         <div class="title">
             <h1>Looking for a college to apply to?<br/>We got you covered!</h1>
@@ -59,11 +27,12 @@
                     <h:message for="userName" errorStyle="color:red; display:block" />
                     <h:inputText id="email" value="#{signUpController.email}" label="E-mail" pa:placeholder="Email" styleClass="signUpText" required="true"/>
                     <h:message for="email" errorStyle="color:red; display:block" /><br/>
-                    <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}">
-                                <f:selectItem itemValue="select" itemLabel="Select Sign Up Type"/>
+                    <h:selectOneMenu id ="signUpType" value="#{signUpController.signUpType}" required="true" label="Sign Up Type" >
+                                <f:selectItem itemValue="select" itemLabel="Select Sign Up Type" noSelectionOption="true"/>
                                 <f:selectItem itemValue="student" itemLabel="Student"/>
                                 <f:selectItem itemValue="university" itemLabel="University"/>
                     </h:selectOneMenu>
+                    <h:message for="signUpType" errorStyle="color:red; display:block" /><br/>
                     <h:commandButton value="Sign Up" id="signUpButton" styleClass="signUpButton" action="#{signUpController.signUpPartOne()}"/>
                 </h:form>
                 <h:form>

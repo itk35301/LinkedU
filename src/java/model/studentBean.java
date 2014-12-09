@@ -162,6 +162,8 @@ public class studentBean {
     }
 
     public String getPhotogalleryid() {
+        if(photogalleryid.equals("null"))
+            return "0";
         return photogalleryid;
     }
 

@@ -9,10 +9,13 @@ package controller;
  *
  * @author itmacuser
  */
+import dao.studentDAOImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import model.studentBean;
  
 @ManagedBean
 public class ImageView {
@@ -22,12 +25,21 @@ public class ImageView {
     @PostConstruct
     public void init() {
         images = new ArrayList<>();
-        for (int i = 1; i <= 1; i++) {
-            images.add("kyle" + i + ".jpg");
+        studentBean stuModel;
+          studentDAOImpl stulogin = new studentDAOImpl();
+         String  stuID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
+                 ArrayList studentCollection = stulogin.findBySTUID(stuID);
+
+        stuModel = (studentBean)studentCollection.get(0);
+        String photo =  stuModel.getPhotogalleryid();
+        int numPics = Integer.parseInt(photo);
+        for (int i = 1; i <= numPics; i++) {
+            images.add(stuID + i + ".jpg");
         }
     }
  
     public List<String> getImages() {
+        init();
         return images;
     }
 }

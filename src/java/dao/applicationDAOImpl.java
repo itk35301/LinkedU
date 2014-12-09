@@ -44,7 +44,7 @@ public class applicationDAOImpl implements applicationDAO{
         String  stuID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loggedInStu");
         System.out.print("The sessionID passed in searched is " + stuID);
         ArrayList studentCollection = stulogin.findBySTUID(stuID);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("loggedInStu");
+
         stuModel = (studentBean)studentCollection.get(0);
         
         String uID = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("searchedUni");

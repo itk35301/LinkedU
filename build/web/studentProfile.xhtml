@@ -67,15 +67,16 @@ and open the template in the editor.
                                 <h:outputText value="#{StudentProfileController.stuModel.about}" />
                                 <p:commandButton id="imageBtn" value="View Gallery" type="button" />
                                 <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" showCloseIcon="true" >
-                                    <p:galleria value="#{imageView.images}" var="image" panelWidth="400" panelHeight="400" showCaption="true">
+                                    <p:galleria value="#{imageView.images}" class="ui-galleria-frame-image" var="image" panelWidth="600" panelHeight="600" showCaption="false">
                                         <p:graphicImage name="images/#{image}" alt="#{image}" title="#{image}"/>
                                     </p:galleria>
                                 </p:overlayPanel>
                                 <p:commandButton value="Upload Pictures" id="pictureBtn"  />
                                 <p:overlayPanel  id="picturePanel" dismissable="true" for="pictureBtn" hideEffect="fade" showCloseIcon="true" >
-                                    <p:fileUpload value="#{fileUploadView.file}" mode="simple"/>
-                                    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.uploadPicture}"/>
-                                </p:overlayPanel>
+                                     <h:form id="form">
+                                    <p:fileUpload fileUploadListener="#{fileUploadView.upload}"/>
+                                    </h:form>
+                                    </p:overlayPanel>
                                 </h:panelGrid>
                                 Interests: <h:outputText value="#{StudentProfileController.stuModel.interests}"/><br/>
                             

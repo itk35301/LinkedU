@@ -53,7 +53,7 @@ public class studentDAOImpl implements studentDAO{
             insertString = "Insert INTO LINKEDU.STUDENT VALUES ('"
                 + aStudent.getStuID()
                 + "','" + aStudent.getVideogalleryid()
-                + "','" + aStudent.getPhotogalleryid()
+                + "','0"
                 + "','" + aStudent.getPassword()   
                 + "','" + aStudent.getFname()
                 + "','" + aStudent.getLname()
@@ -125,7 +125,38 @@ public class studentDAOImpl implements studentDAO{
         return rowCount;
     }
     
-
+    @Override
+    public int updateImageID(studentBean aStudent) {
+        Connection DBConn = null;
+        int rowCount = 0;
+        int id;
+        try{
+            DBHelper.loadDriver("org.apache.derby.jdbc.ClientDriver");
+            String myDB = "jdbc:derby://gfish.it.ilstu.edu:1527/IT3530101Fall14_LinkedU";
+            DBConn = DriverManager.getConnection(myDB, "itkstu", "student");
+                    if(aStudent.getPhotogalleryid().equals("null")){
+                        id =1;
+                    }
+                    else{
+             id = Integer.parseInt(aStudent.getPhotogalleryid());
+            id = id +1;}
+            aStudent.setPhotogalleryid(Integer.toString(id));
+            String updateString;
+            Statement stmt = DBConn.createStatement();
+            updateString = "UPDATE linkedu.STUDENT SET "
+                + "PHOTOGALLERYID = '" + id + "' "
+                + "WHERE STUID = '" + aStudent.getStuID() + "'";
+            
+            rowCount = stmt.executeUpdate(updateString);
+            System.out.println("studentTable update string =" + updateString);
+            
+           
+            DBConn.close();  
+        }catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return rowCount;
+    }
     
     @Override
     public int updateFName(studentBean aStudent) {
